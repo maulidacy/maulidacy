@@ -1,10 +1,10 @@
 # Hello World!, I'm Maulida Cahya Kurnia, Web Developer!
 
-[![Gmail](https://img.shields.io/badge/Gmail-white?style=flat&logo=gmail)](mailto:email@domain.com)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github)](www.linkedin.com/in/maulida-cahya-kurnia-626115236)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/MaulidaCahyaKurnia/)
+[![Gmail](https://img.shields.io/badge/Gmail-white?style=flat&logo=gmail)](mailto:cahyamaulida011@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github)](https://github.com/maulidacy/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/maulida-cahya-kurnia-626115236/)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/maulida.cahyaa)
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https://youtube.com/c/<channel_name>)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https:)
 
 I'm Maulida Cahya Kurnia, a web developer based in Indonesia. Actively exploring, developing projects, and deepening understanding in the world of programming. I am problem-solving, innovative, self-motivated, and dreamy.
 
