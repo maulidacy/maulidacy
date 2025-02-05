@@ -12,7 +12,7 @@ I'm Maulida Cahya Kurnia, a web developer based in Indonesia. Actively exploring
 - My hobbies are entrepreneurship and traveling
 - I live in Grobogan, Central Java, Indonesia
 - Currently learning Python and Machine Learning
-- My other skills are cooking and video editing
+- My other skills are Pastry Prodigy and video editing
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=maulidacy&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
