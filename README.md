@@ -18,6 +18,6 @@ I'm Maulida Cahya Kurnia, a web developer based in Indonesia. Actively exploring
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=maulidacy&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
 
 
-![Statistik](https://github-readme-stats.vercel.app/api?username=maulidacy&show_icons=true&theme=radical)
+![Statistik](https://github-readme-stats.vercel.app/api?username=maulidacyy&show_icons=true&theme=radical)
 
 Thank you for visiting my profile!
