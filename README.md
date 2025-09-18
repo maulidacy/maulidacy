@@ -1,4 +1,4 @@
-# Hello World!, I'm Maulida Cahya Kurnia, Web Developer!
+# Hello World!, I'm Maulida Cahya Kurnia, AI & ML Enthusiast | Future AI Engineer
 
 [![Gmail](https://img.shields.io/badge/Gmail-white?style=flat&logo=gmail)](mailto:cahyamaulida011@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github)](https://github.com/maulidacy/)
@@ -6,13 +6,20 @@
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/maulida.cahyaa)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https:)
 
-I'm Maulida Cahya Kurnia, a web developer based in Indonesia. Actively exploring, developing projects, and deepening understanding in the world of programming. I am problem-solving, innovative, self-motivated, and dreamy.
+I'm Maulida Cahya Kurnia, an aspiring **AI & Machine Learning Engineer** passionate about Python, data, and intelligent systems.  
+Currently focusing on **Machine Learning projects** such as classification and recommendation systems.  
+I love solving problems and aim to create impactful AI solutions that can help people in real life.  
 
-### About My Personality
-- My hobbies are entrepreneurship and traveling
-- I live in Grobogan, Central Java, Indonesia
-- Currently learning Python and Machine Learning
-- My other skills are Pastry Prodigy and video editing
+### 🔭 Current Focus
+- Building AI/ML projects with Python  
+- Learning Data Science & Machine Learning fundamentals  
+- Exploring TensorFlow & Scikit-learn  
+
+### 🌟 About My Personality
+- Passionate about entrepreneurship and traveling  
+- Based in Grobogan, Central Java, Indonesia  
+- Currently learning Python and Machine Learning  
+- Skilled in pastry creation and creative video editing
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=maulidacy&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
