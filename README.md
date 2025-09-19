@@ -5,6 +5,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/maulida-cahya-kurnia-626115236/)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/maulida.cahyaa)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https:)
+![Profile views](https://komarev.com/ghpvc/?username=maulidacy&label=Profile%20views&color=0e75b6&style=flat)
 
 I'm Maulida Cahya Kurnia, an aspiring **AI & Machine Learning Engineer** passionate about Python, data, and intelligent systems.  
 Currently focusing on **Machine Learning projects** such as classification and recommendation systems.  
@@ -26,5 +27,10 @@ I love solving problems and aim to create impactful AI solutions that can help p
 
 
 ![Statistik](https://github-readme-stats.vercel.app/api?username=maulidacyy&show_icons=true&theme=radical)
+
+---
+
+✨ *"Coding isn't about who's the smartest.
+Anyone can do it, as long as they're consistent. Consistency is the key to success."* ✨
 
 Thank you for visiting my profile!
