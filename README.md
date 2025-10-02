@@ -1,4 +1,4 @@
-# Hello World!, I'm Maulida Cahya Kurnia, AI & ML Enthusiast | Future AI Engineer
+# Hello World!, I'm Maulida Cahya Kurnia, AI & ML Enthusiast
 
 [![Gmail](https://img.shields.io/badge/Gmail-white?style=flat&logo=gmail)](mailto:cahyamaulida011@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github)](https://github.com/maulidacy/)
