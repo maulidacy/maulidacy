@@ -7,9 +7,9 @@
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https:)
 ![Profile views](https://komarev.com/ghpvc/?username=maulidacy&label=Profile%20views&color=0e75b6&style=flat)
 
-I'm Maulida Cahya Kurnia, an aspiring **AI & Machine Learning Engineer** passionate about Python, data, and intelligent systems.  
-Currently focusing on **Machine Learning projects** such as classification and recommendation systems.  
-I love solving problems and aim to create impactful AI solutions that can help people in real life.  
+My name is Maulida Cahya Kurnia, an aspiring **AI and Machine Learning Engineer** who is passionate about Python, data, and intelligent systems. 
+Currently, I am focused on **Machine Learning projects** such as classification and recommendation systems. 
+I enjoy problem-solving and aspire to create AI solutions that have a positive impact and can help people in real life.
 
 ### 🔭 Current Focus
 - Building AI/ML projects with Python  
