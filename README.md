@@ -2,7 +2,7 @@
 
 [![Gmail](https://img.shields.io/badge/Gmail-white?style=flat&logo=gmail)](mailto:cahyamaulida011@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github)](https://github.com/maulidacy/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/maulida-cahya-kurnia-626115236/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/maulidacahyakurnia)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/maulida.cahyaa)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https:)
 ![Profile views](https://komarev.com/ghpvc/?username=maulidacy&label=Profile%20views&color=0e75b6&style=flat)
@@ -10,6 +10,14 @@
 My name is Maulida Cahya Kurnia, an aspiring **AI and Machine Learning Engineer** who is passionate about Python, data, and intelligent systems. 
 Currently, I am focused on **Machine Learning projects** such as classification and recommendation systems. 
 I enjoy problem-solving and aspire to create AI solutions that have a positive impact and can help people in real life.
+
+### 🚀 Visit my portfolio
+
+<p align="left">
+  <a href="https://maulida.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/Portfolio-maulida.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio">
+  </a>
+</p>
 
 ### 🔭 Current Focus
 - Building AI/ML projects with Python  
