@@ -45,9 +45,9 @@
 
 I'm **Maulida Cahya Kurnia**, a Computer Science student interested in building intelligent, data-driven, and practical software systems.
 
-My work spans **Artificial Intelligence, Machine Learning, Data Science, and Full-Stack Development**. I enjoy turning ideas into working applications, from predictive and recommendation systems to AI-powered web experiences.
+My work spans **Artificial Intelligence, Machine Learning, Data Science, and Full-Stack Application Development**. I enjoy turning ideas into working products, from predictive and recommendation systems to AI-powered applications.
 
-I'm particularly interested in **AI × Software Engineering**: building models, integrating them into applications, and turning experiments into systems people can actually use.
+I'm particularly interested in **AI × Software Engineering**: building models, integrating them into real applications, and turning experiments into reliable systems that people can actually use.
 
 🏆 One of my projects was selected as a **Top 20 Final Project** in the Hacktiv8 × IBM SkillsBuild program.
 
@@ -65,7 +65,7 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 <img src="https://img.shields.io/badge/INTELLIGENT_SYSTEMS-30363D?style=for-the-badge&logo=dependabot&logoColor=58A6FF" />
 <br/>
 <img src="https://img.shields.io/badge/PREDICTION_%26_RECOMMENDATION-30363D?style=for-the-badge&logo=databricks&logoColor=F0F6FC" />
-<img src="https://img.shields.io/badge/FULL--STACK_DEVELOPMENT-30363D?style=for-the-badge&logo=stackblitz&logoColor=F0F6FC" />
+<img src="https://img.shields.io/badge/FULL--STACK_APPLICATION_DEVELOPMENT-30363D?style=for-the-badge&logo=stackblitz&logoColor=F0F6FC" />
 <img src="https://img.shields.io/badge/DATA--DRIVEN_PRODUCTS-30363D?style=for-the-badge&logo=googleanalytics&logoColor=F0F6FC" />
 
 </div>
