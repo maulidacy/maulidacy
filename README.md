@@ -80,6 +80,7 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 
 <img src="https://img.shields.io/badge/Python-21262D?style=for-the-badge&logo=python&logoColor=3776AB" />
 <img src="https://img.shields.io/badge/C++-21262D?style=for-the-badge&logo=cplusplus&logoColor=00599C" />
+<img src="https://img.shields.io/badge/C%23-21262D?style=for-the-badge&logo=csharp&logoColor=512BD4" />
 <img src="https://img.shields.io/badge/Java-21262D?style=for-the-badge&logo=openjdk&logoColor=ED8B00" />
 <img src="https://img.shields.io/badge/JavaScript-21262D?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
 <img src="https://img.shields.io/badge/TypeScript-21262D?style=for-the-badge&logo=typescript&logoColor=3178C6" />
@@ -87,13 +88,15 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 <img src="https://img.shields.io/badge/PHP-21262D?style=for-the-badge&logo=php&logoColor=777BB4" />
 <img src="https://img.shields.io/badge/SQL-21262D?style=for-the-badge&logo=postgresql&logoColor=4169E1" />
 
-### Frontend & Mobile
+### Frontend, Mobile & Game Development
 
 <img src="https://img.shields.io/badge/React-21262D?style=for-the-badge&logo=react&logoColor=61DAFB" />
 <img src="https://img.shields.io/badge/Next.js-21262D?style=for-the-badge&logo=nextdotjs&logoColor=F0F6FC" />
 <img src="https://img.shields.io/badge/Vite-21262D?style=for-the-badge&logo=vite&logoColor=646CFF" />
 <img src="https://img.shields.io/badge/Tailwind_CSS-21262D?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4" />
+<img src="https://img.shields.io/badge/Bootstrap-21262D?style=for-the-badge&logo=bootstrap&logoColor=7952B3" />
 <img src="https://img.shields.io/badge/Flutter-21262D?style=for-the-badge&logo=flutter&logoColor=02569B" />
+<img src="https://img.shields.io/badge/Unity-21262D?style=for-the-badge&logo=unity&logoColor=F0F6FC" />
 
 ### Backend & Database
 
