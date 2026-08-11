@@ -149,7 +149,7 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 
 <img
   width="65%"
-  src="https://streak-stats.demolab.com?user=maulidacy&hide_border=true&background=0D1117&ring=D29922&fire=D29922&currStreakLabel=7EE787&sideLabels=C9D1D9&currStreakNum=D29922&sideNums=D29922&dates=8B949E"
+  src="https://github-readme-stats-fast.vercel.app/api/streak?username=maulidacy&theme=github_dark"
   alt="GitHub Streak"
 />
 
