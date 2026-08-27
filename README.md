@@ -165,8 +165,9 @@ Outside of technology, I enjoy **entrepreneurship, traveling, creative media, an
 
 ### `Keep learning. Keep building.`
 
-*"Coding isn't about who's the smartest. Anyone can do it, as long as they're consistent."*
+> *"Coding isn't about who's the smartest. It's about who's the most consistent."*
 
-**Thanks for visiting my profile!**
+---
+💡 **Thanks for visiting my profile!**
 
 </div>
