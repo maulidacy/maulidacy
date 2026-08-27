@@ -134,24 +134,24 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 
 <div align="center">
 
-<img
-  width="48%"
-  src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=maulidacy&theme=github_dark"
-  alt="GitHub Stats"
-/>
-<img
-  width="48%"
-  src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=maulidacy&theme=github_dark"
-  alt="Languages by Repository"
-/>
+  <img
+    width="40%"
+    src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=maulidacy&theme=github_dark"
+    alt="GitHub Stats"
+  />
+  <img
+    width="40%"
+    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=maulidacy&theme=github_dark"
+    alt="Languages by Repository"
+  />
 
-<br/><br/>
+  <br />
 
-<img
-  width="65%"
-  src="https://github-readme-stats-fast.vercel.app/api/streak?username=maulidacy&theme=github_dark"
-  alt="GitHub Streak"
-/>
+  <img
+    width="48%"
+    src="https://github-readme-stats-fast.vercel.app/api/streak?username=maulidacy&theme=github_dark"
+    alt="GitHub Streak"
+  />
 
 </div>
 
