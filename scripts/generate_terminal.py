@@ -1,7 +1,9 @@
 import html
 import json
 import os
+import time
 import urllib.request
+from urllib.error import HTTPError, URLError
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -27,6 +29,29 @@ HEADERS = {
 # ============================================================
 
 
+def request_json(request, attempts=3, timeout=20):
+    """Open a GitHub API request with a small retry policy."""
+
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return json.loads(response.read())
+
+        except HTTPError as error:
+            retryable = error.code in {429, 500, 502, 503, 504}
+
+            if not retryable or attempt == attempts:
+                raise
+
+        except URLError:
+            if attempt == attempts:
+                raise
+
+        time.sleep(2 ** (attempt - 1))
+
+    raise RuntimeError("GitHub API request failed after retries.")
+
+
 def graphql(query, variables):
     payload = json.dumps(
         {
@@ -44,8 +69,7 @@ def graphql(query, variables):
         },
     )
 
-    with urllib.request.urlopen(request) as response:
-        result = json.loads(response.read())
+    result = request_json(request)
 
     if "errors" in result:
         raise RuntimeError(result["errors"])
@@ -59,8 +83,7 @@ def rest(url):
         headers=HEADERS,
     )
 
-    with urllib.request.urlopen(request) as response:
-        return json.loads(response.read())
+    return request_json(request)
 
 
 # ============================================================
@@ -254,12 +277,29 @@ def calculate_activity_trend(days):
             previous_total += count
 
     if previous_total == 0:
-        change = 100.0 if recent_total > 0 else 0.0
-    else:
-        change = (
-            (recent_total - previous_total)
-            / previous_total
-        ) * 100
+        if recent_total > 0:
+            return {
+                "change": None,
+                "symbol": "▲",
+                "color": "#3fb950",
+                "label": "NEW",
+                "recent": recent_total,
+                "previous": previous_total,
+            }
+
+        return {
+            "change": 0.0,
+            "symbol": "-",
+            "color": "#d29922",
+            "label": "STABLE",
+            "recent": recent_total,
+            "previous": previous_total,
+        }
+
+    change = (
+        (recent_total - previous_total)
+        / previous_total
+    ) * 100
 
     if change > 2:
         return {
@@ -283,11 +323,35 @@ def calculate_activity_trend(days):
 
     return {
         "change": change,
-        "symbol": "—",
+        "symbol": "-",
         "color": "#d29922",
         "label": "STABLE",
         "recent": recent_total,
         "previous": previous_total,
+    }
+
+
+def activity_status(days):
+    """Return a meaningful profile status based on the latest 7 days."""
+
+    today = datetime.now(WIB).date()
+    start = today - timedelta(days=6)
+
+    contributions = sum(
+        count
+        for date_string, count in days.items()
+        if start <= datetime.fromisoformat(date_string).date() <= today
+    )
+
+    if contributions > 0:
+        return {
+            "label": "ACTIVE",
+            "color": "#3fb950",
+        }
+
+    return {
+        "label": "IDLE",
+        "color": "#6e7681",
     }
 
 
@@ -569,9 +633,11 @@ def generate_svg(
     monthly_values,
     languages,
     trend,
+    status,
 ):
+    chart_color = "#58a6ff"
     points = chart_points(monthly_values)
-    circles = chart_circles(monthly_values, trend["color"])
+    circles = chart_circles(monthly_values, chart_color)
     area_path = chart_area(monthly_values)
 
     current_period = format_current_streak_period(current_start)
@@ -584,12 +650,18 @@ def generate_svg(
     middle_label = month_label(*months[len(months) // 2])
     last_label = month_label(*months[-1])
 
-    change = abs(trend["change"])
-    trend_text = (
-        f"{trend['symbol']} "
-        f"{change:.1f}% "
-        f"VS PREVIOUS 30 DAYS"
-    )
+    if trend["change"] is None:
+        trend_text = (
+            f"{trend['symbol']} NEW ACTIVITY "
+            f"VS PREVIOUS 30 DAYS"
+        )
+    else:
+        change = abs(trend["change"])
+        trend_text = (
+            f"{trend['symbol']} "
+            f"{change:.1f}% "
+            f"VS PREVIOUS 30 DAYS"
+        )
 
     streak_color = (
         "#3fb950"
@@ -615,9 +687,6 @@ def generate_svg(
     else:
         streak_animation = ""
 
-    synced = datetime.now(WIB).strftime(
-        "%d %b %Y · %H:%M WIB"
-    ).upper()
 
     return f"""<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -625,6 +694,8 @@ def generate_svg(
   height="430"
   viewBox="0 0 1200 430"
 >
+
+  <title>GitHub development activity for {html.escape(USERNAME)}</title>
 
   <!-- Background -->
   <rect
@@ -662,7 +733,7 @@ def generate_svg(
     cx="1094"
     cy="37"
     r="5"
-    fill="#3fb950"
+    fill="{status['color']}"
   >
     <animate
       attributeName="opacity"
@@ -679,7 +750,7 @@ def generate_svg(
     font-family="monospace"
     font-size="11"
   >
-    ACTIVE
+    {status['label']}
   </text>
 
   <line
@@ -748,14 +819,14 @@ def generate_svg(
 
   <path
     d="{area_path}"
-    fill="{trend['color']}"
+    fill="{chart_color}"
     opacity="0.07"
   />
 
   <polyline
     points="{points}"
     fill="none"
-    stroke="{trend['color']}"
+    stroke="{chart_color}"
     stroke-width="3"
     stroke-linecap="round"
     stroke-linejoin="round"
@@ -945,7 +1016,7 @@ def generate_svg(
     cx="40"
     cy="410"
     r="3"
-    fill="#3fb950"
+    fill="{status['color']}"
   />
 
   <text
@@ -966,7 +1037,7 @@ def generate_svg(
     font-family="monospace"
     font-size="10"
   >
-    LAST SYNC · {synced}
+    AUTO UPDATED · GITHUB ACTIONS
   </text>
 
 </svg>
@@ -994,6 +1065,7 @@ def main():
     ) = calculate_streaks(days)
 
     trend = calculate_activity_trend(days)
+    status = activity_status(days)
 
     print("Fetching language statistics...")
     languages = get_languages()
@@ -1012,6 +1084,7 @@ def main():
         monthly_values=monthly_values,
         languages=languages,
         trend=trend,
+        status=status,
     )
 
     os.makedirs(
@@ -1046,10 +1119,13 @@ def main():
             longest_end,
         ),
     )
-    print(
-        "30-day trend:",
-        f"{trend['symbol']} {trend['change']:.1f}%",
-    )
+    if trend["change"] is None:
+        trend_log = f"{trend['symbol']} NEW ACTIVITY"
+    else:
+        trend_log = f"{trend['symbol']} {trend['change']:.1f}%"
+
+    print("30-day trend:", trend_log)
+    print("Status:", status["label"])
     print("Languages:", languages)
 
 
