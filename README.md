@@ -71,15 +71,10 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 </div>
 
 ---
-
 ## Technologies I've Worked With
 
 <p align="center">
-  <img
-    src="./assets/tech-stack.svg"
-    width="100%"
-    alt="Technology Landscape"
-  />
+  <img src="./assets/tech-stack.svg" width="100%" alt="Tech Stack" />
 </p>
 
 ---
