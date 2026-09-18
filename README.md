@@ -74,59 +74,13 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 
 ## Technologies I've Worked With
 
-<div align="center">
-
-### Languages
-
-<img src="https://img.shields.io/badge/Python-21262D?style=for-the-badge&logo=python&logoColor=3776AB" />
-<img src="https://img.shields.io/badge/C++-21262D?style=for-the-badge&logo=cplusplus&logoColor=00599C" />
-<img src="https://img.shields.io/badge/C%23-21262D?style=for-the-badge&logo=csharp&logoColor=512BD4" />
-<img src="https://img.shields.io/badge/Java-21262D?style=for-the-badge&logo=openjdk&logoColor=ED8B00" />
-<img src="https://img.shields.io/badge/JavaScript-21262D?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
-<img src="https://img.shields.io/badge/TypeScript-21262D?style=for-the-badge&logo=typescript&logoColor=3178C6" />
-<img src="https://img.shields.io/badge/Dart-21262D?style=for-the-badge&logo=dart&logoColor=0175C2" />
-<img src="https://img.shields.io/badge/PHP-21262D?style=for-the-badge&logo=php&logoColor=777BB4" />
-<img src="https://img.shields.io/badge/SQL-21262D?style=for-the-badge&logo=postgresql&logoColor=4169E1" />
-
-### Frontend, Mobile & Game Development
-
-<img src="https://img.shields.io/badge/React-21262D?style=for-the-badge&logo=react&logoColor=61DAFB" />
-<img src="https://img.shields.io/badge/Next.js-21262D?style=for-the-badge&logo=nextdotjs&logoColor=F0F6FC" />
-<img src="https://img.shields.io/badge/Vite-21262D?style=for-the-badge&logo=vite&logoColor=646CFF" />
-<img src="https://img.shields.io/badge/Tailwind_CSS-21262D?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4" />
-<img src="https://img.shields.io/badge/Bootstrap-21262D?style=for-the-badge&logo=bootstrap&logoColor=7952B3" />
-<img src="https://img.shields.io/badge/Flutter-21262D?style=for-the-badge&logo=flutter&logoColor=02569B" />
-<img src="https://img.shields.io/badge/Unity-21262D?style=for-the-badge&logo=unity&logoColor=F0F6FC" />
-
-### Backend & Database
-
-<img src="https://img.shields.io/badge/Node.js-21262D?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E" />
-<img src="https://img.shields.io/badge/FastAPI-21262D?style=for-the-badge&logo=fastapi&logoColor=009688" />
-<img src="https://img.shields.io/badge/PostgreSQL-21262D?style=for-the-badge&logo=postgresql&logoColor=4169E1" />
-<img src="https://img.shields.io/badge/MySQL-21262D?style=for-the-badge&logo=mysql&logoColor=4479A1" />
-<img src="https://img.shields.io/badge/Supabase-21262D?style=for-the-badge&logo=supabase&logoColor=3FCF8E" />
-<img src="https://img.shields.io/badge/Prisma-21262D?style=for-the-badge&logo=prisma&logoColor=F0F6FC" />
-
-### AI, Machine Learning & Data
-
-<img src="https://img.shields.io/badge/TensorFlow-21262D?style=for-the-badge&logo=tensorflow&logoColor=FF6F00" />
-<img src="https://img.shields.io/badge/Keras-21262D?style=for-the-badge&logo=keras&logoColor=D00000" />
-<img src="https://img.shields.io/badge/PyTorch-21262D?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" />
-<img src="https://img.shields.io/badge/scikit--learn-21262D?style=for-the-badge&logo=scikitlearn&logoColor=F7931E" />
-<img src="https://img.shields.io/badge/Pandas-21262D?style=for-the-badge&logo=pandas&logoColor=F0F6FC" />
-<img src="https://img.shields.io/badge/NumPy-21262D?style=for-the-badge&logo=numpy&logoColor=4DABCF" />
-<img src="https://img.shields.io/badge/Matplotlib-21262D?style=for-the-badge&logo=python&logoColor=F0F6FC" />
-
-### ML Apps & Development Tools
-
-<img src="https://img.shields.io/badge/Streamlit-21262D?style=for-the-badge&logo=streamlit&logoColor=FF4B4B" />
-<img src="https://img.shields.io/badge/Gradio-21262D?style=for-the-badge&logo=gradio&logoColor=F97316" />
-<img src="https://img.shields.io/badge/Jupyter-21262D?style=for-the-badge&logo=jupyter&logoColor=F37626" />
-<img src="https://img.shields.io/badge/Git-21262D?style=for-the-badge&logo=git&logoColor=F05032" />
-<img src="https://img.shields.io/badge/GitHub-21262D?style=for-the-badge&logo=github&logoColor=F0F6FC" />
-<img src="https://img.shields.io/badge/Vercel-21262D?style=for-the-badge&logo=vercel&logoColor=F0F6FC" />
-
-</div>
+<p align="center">
+  <img
+    src="./assets/tech-stack.svg"
+    width="100%"
+    alt="Technology Landscape"
+  />
+</p>
 
 ---
 
