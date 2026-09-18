@@ -130,25 +130,18 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 
 ---
 
-## GitHub Analytics
+## GitHub Activity
 
 <div align="center">
 
   <img
-    width="40%"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=maulidacy&theme=github_dark"
-    alt="GitHub Stats"
-  />
-  <img
-    width="40%"
+    height="190"
     src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=maulidacy&theme=github_dark"
-    alt="Languages by Repository"
+    alt="Languages"
   />
-
-  <br />
-
+  &nbsp;&nbsp;
   <img
-    width="48%"
+    height="190"
     src="https://github-readme-stats-fast.vercel.app/api/streak?username=maulidacy&theme=github_dark"
     alt="GitHub Streak"
   />
@@ -166,6 +159,8 @@ Outside of technology, I enjoy **entrepreneurship, traveling, creative media, an
 ### `Keep learning. Keep building.`
 
 > *"Coding isn't about who's the smartest. It's about who's the most consistent."*
+
+Along the way, I've learned that **progress doesn't always come from knowing everything, but from being willing to keep learning and trying again.**
 
 ---
 💡 **Thanks for visiting my profile!**
