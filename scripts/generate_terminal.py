@@ -205,12 +205,12 @@ def format_streak_period(start, end):
 
     if start.year == end.year:
         return (
-            f"{format_date(start)} — "
+            f"{format_date(start)} - "
             f"{format_date(end)}"
         )
 
     return (
-        f"{format_date(start)}, {start.year} — "
+        f"{format_date(start)}, {start.year} - "
         f"{format_date(end)}, {end.year}"
     )
 
