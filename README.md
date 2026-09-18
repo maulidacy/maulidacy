@@ -71,10 +71,69 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 </div>
 
 ---
+
 ## Technologies I've Worked With
 
 <p align="center">
-  <img src="./assets/tech-stack.svg" width="100%" alt="Tech Stack" />
+
+<!-- ==================== LANGUAGES ==================== -->
+
+<img src="https://img.shields.io/badge/Python-6D4AFF?style=for-the-badge&logo=python&logoColor=white" />
+<img src="https://img.shields.io/badge/C%2B%2B-6D4AFF?style=for-the-badge&logo=cplusplus&logoColor=white" />
+<img src="https://img.shields.io/badge/C%23-6D4AFF?style=for-the-badge&logo=csharp&logoColor=white" />
+<img src="https://img.shields.io/badge/Java-6D4AFF?style=for-the-badge&logo=openjdk&logoColor=white" />
+<img src="https://img.shields.io/badge/JavaScript-6D4AFF?style=for-the-badge&logo=javascript&logoColor=white" />
+<img src="https://img.shields.io/badge/TypeScript-6D4AFF?style=for-the-badge&logo=typescript&logoColor=white" />
+<img src="https://img.shields.io/badge/Dart-6D4AFF?style=for-the-badge&logo=dart&logoColor=white" />
+<img src="https://img.shields.io/badge/PHP-6D4AFF?style=for-the-badge&logo=php&logoColor=white" />
+
+<br/>
+
+<!-- ==================== WEB / MOBILE / GAME ==================== -->
+
+<img src="https://img.shields.io/badge/React-087EA4?style=for-the-badge&logo=react&logoColor=white" />
+<img src="https://img.shields.io/badge/Next.js-087EA4?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+<img src="https://img.shields.io/badge/Vite-087EA4?style=for-the-badge&logo=vite&logoColor=white" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-087EA4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+<img src="https://img.shields.io/badge/Bootstrap-087EA4?style=for-the-badge&logo=bootstrap&logoColor=white" />
+<img src="https://img.shields.io/badge/Flutter-087EA4?style=for-the-badge&logo=flutter&logoColor=white" />
+<img src="https://img.shields.io/badge/Unity-087EA4?style=for-the-badge&logo=unity&logoColor=white" />
+
+<br/>
+
+<!-- ==================== BACKEND ==================== -->
+
+<img src="https://img.shields.io/badge/Node.js-168363?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+<img src="https://img.shields.io/badge/FastAPI-168363?style=for-the-badge&logo=fastapi&logoColor=white" />
+<img src="https://img.shields.io/badge/PostgreSQL-168363?style=for-the-badge&logo=postgresql&logoColor=white" />
+<img src="https://img.shields.io/badge/MySQL-168363?style=for-the-badge&logo=mysql&logoColor=white" />
+<img src="https://img.shields.io/badge/Supabase-168363?style=for-the-badge&logo=supabase&logoColor=white" />
+<img src="https://img.shields.io/badge/Prisma-168363?style=for-the-badge&logo=prisma&logoColor=white" />
+<img src="https://img.shields.io/badge/SQL-168363?style=for-the-badge&logo=postgresql&logoColor=white" />
+
+<br/>
+
+<!-- ==================== AI / ML / DATA ==================== -->
+
+<img src="https://img.shields.io/badge/TensorFlow-C65D21?style=for-the-badge&logo=tensorflow&logoColor=white" />
+<img src="https://img.shields.io/badge/Keras-C65D21?style=for-the-badge&logo=keras&logoColor=white" />
+<img src="https://img.shields.io/badge/PyTorch-C65D21?style=for-the-badge&logo=pytorch&logoColor=white" />
+<img src="https://img.shields.io/badge/scikit--learn-C65D21?style=for-the-badge&logo=scikitlearn&logoColor=white" />
+<img src="https://img.shields.io/badge/Pandas-C65D21?style=for-the-badge&logo=pandas&logoColor=white" />
+<img src="https://img.shields.io/badge/NumPy-C65D21?style=for-the-badge&logo=numpy&logoColor=white" />
+<img src="https://img.shields.io/badge/Matplotlib-C65D21?style=for-the-badge&logo=python&logoColor=white" />
+<img src="https://img.shields.io/badge/Jupyter-C65D21?style=for-the-badge&logo=jupyter&logoColor=white" />
+
+<br/>
+
+<!-- ==================== TOOLS ==================== -->
+
+<img src="https://img.shields.io/badge/Streamlit-9E3F64?style=for-the-badge&logo=streamlit&logoColor=white" />
+<img src="https://img.shields.io/badge/Gradio-9E3F64?style=for-the-badge&logo=gradio&logoColor=white" />
+<img src="https://img.shields.io/badge/Git-9E3F64?style=for-the-badge&logo=git&logoColor=white" />
+<img src="https://img.shields.io/badge/GitHub-9E3F64?style=for-the-badge&logo=github&logoColor=white" />
+<img src="https://img.shields.io/badge/Vercel-9E3F64?style=for-the-badge&logo=vercel&logoColor=white" />
+
 </p>
 
 ---
