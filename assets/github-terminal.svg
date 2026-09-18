@@ -1,577 +1,479 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="1200"
-     height="430"
-     viewBox="0 0 1200 430">
+     width="720"
+     height="520"
+     viewBox="0 0 720 520">
 
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
   <!-- BACKGROUND -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
 
-  <rect
-    width="1200"
-    height="430"
-    rx="14"
-    fill="#0d1117"
-  />
+  <rect width="720"
+        height="520"
+        rx="14"
+        fill="#0d1117"/>
 
-  <rect
-    x="1"
-    y="1"
-    width="1198"
-    height="428"
-    rx="13"
-    fill="none"
-    stroke="#30363d"
-    stroke-width="2"
-  />
+  <rect x="1"
+        y="1"
+        width="718"
+        height="518"
+        rx="13"
+        fill="none"
+        stroke="#30363d"
+        stroke-width="2"/>
 
 
-  <!-- ===================================================== -->
-  <!-- TOP STATUS -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
+  <!-- HEADER -->
+  <!-- ================================================= -->
 
-  <text
-    x="34"
-    y="42"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-    letter-spacing="1.5"
-  >
-    MAULIDACY / DEVELOPMENT SNAPSHOT
+  <text x="28"
+        y="34"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.2">
+    MAULIDACY / GITHUB SNAPSHOT
   </text>
 
-  <!-- Active indicator -->
-  <circle
-    cx="1094"
-    cy="37"
-    r="5"
-    fill="#3fb950"
-  >
+  <circle cx="640"
+          cy="30"
+          r="4.5"
+          fill="#3fb950">
+
     <animate
       attributeName="opacity"
-      values="1;0.25;1"
+      values="1;0.3;1"
       dur="2s"
-      repeatCount="indefinite"
-    />
+      repeatCount="indefinite"/>
+
   </circle>
 
-  <text
-    x="1108"
-    y="42"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="653"
+        y="34"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11">
     ACTIVE
   </text>
 
-  <line
-    x1="34"
-    y1="65"
-    x2="1166"
-    y2="65"
-    stroke="#30363d"
-  />
+  <line x1="28"
+        y1="50"
+        x2="692"
+        y2="50"
+        stroke="#30363d"/>
 
 
-  <!-- ===================================================== -->
-  <!-- LEFT SECTION : CONTRIBUTIONS -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
+  <!-- CONTRIBUTIONS -->
+  <!-- ================================================= -->
 
-  <text
-    x="34"
-    y="101"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="12"
-    letter-spacing="1.7"
-  >
+  <text x="34"
+        y="78"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.5">
     CONTRIBUTIONS
   </text>
 
-  <text
-    x="34"
-    y="151"
-    fill="#f0f6fc"
-    font-family="Arial, sans-serif"
-    font-size="36"
-    font-weight="700"
-  >
+  <text x="34"
+        y="114"
+        fill="#f0f6fc"
+        font-family="Arial, sans-serif"
+        font-size="31"
+        font-weight="700">
     1,219
   </text>
 
-  <text
-    x="155"
-    y="151"
-    fill="#8b949e"
-    font-family="Arial, sans-serif"
-    font-size="15"
-  >
+  <text x="140"
+        y="114"
+        fill="#8b949e"
+        font-family="Arial, sans-serif"
+        font-size="14">
     total contributions
   </text>
 
-  <text
-    x="34"
-    y="176"
-    fill="#3fb950"
-    font-family="monospace"
-    font-size="11"
-  >
-    ● CONSISTENT DEVELOPMENT ACTIVITY
+  <!-- Trend -->
+  <text x="686"
+        y="109"
+        text-anchor="end"
+        fill="#3fb950"
+        font-family="monospace"
+        font-size="10.5">
+    ▲ 18.4% VS PREVIOUS 30 DAYS
   </text>
 
 
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
   <!-- CHART GRID -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
 
-  <g
-    stroke="#21262d"
-    stroke-width="1"
-  >
-    <line x1="34" y1="205" x2="675" y2="205"/>
-    <line x1="34" y1="243" x2="675" y2="243"/>
-    <line x1="34" y1="281" x2="675" y2="281"/>
-    <line x1="34" y1="319" x2="675" y2="319"/>
+  <g stroke="#21262d"
+     stroke-width="1">
+
+    <line x1="34" y1="155" x2="686" y2="155"/>
+    <line x1="34" y1="198" x2="686" y2="198"/>
+    <line x1="34" y1="241" x2="686" y2="241"/>
+    <line x1="34" y1="285" x2="686" y2="285"/>
+
   </g>
 
 
-  <!-- ===================================================== -->
-  <!-- AREA GRAPH -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
+  <!-- CHART AREA -->
+  <!-- ================================================= -->
 
   <path
     d="
-      M45 298
-      L85 282
-      L125 291
-      L165 259
-      L205 268
-      L245 244
-      L285 262
-      L325 237
-      L365 248
-      L405 217
-      L445 231
-      L485 203
-      L525 219
-      L565 184
-      L605 198
-      L650 164
-      L650 319
-      L45 319
+      M42 265
+      L96 246
+      L150 254
+      L204 223
+      L258 232
+      L312 210
+      L366 222
+      L420 193
+      L474 204
+      L528 174
+      L582 188
+      L636 148
+      L636 285
+      L42 285
       Z
     "
     fill="#3fb950"
-    opacity="0.07"
-  />
+    opacity="0.07"/>
 
-  <!-- Main trend line -->
+
+  <!-- ================================================= -->
+  <!-- CHART LINE -->
+  <!-- ================================================= -->
+
   <polyline
     points="
-      45,298
-      85,282
-      125,291
-      165,259
-      205,268
-      245,244
-      285,262
-      325,237
-      365,248
-      405,217
-      445,231
-      485,203
-      525,219
-      565,184
-      605,198
-      650,164
+      42,265
+      96,246
+      150,254
+      204,223
+      258,232
+      312,210
+      366,222
+      420,193
+      474,204
+      528,174
+      582,188
+      636,148
     "
     fill="none"
     stroke="#3fb950"
     stroke-width="3"
     stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+    stroke-linejoin="round"/>
 
 
-  <!-- ===================================================== -->
-  <!-- GRAPH POINTS -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
+  <!-- CHART POINTS -->
+  <!-- ================================================= -->
 
-  <g
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  >
-    <circle cx="45"  cy="298" r="4"/>
-    <circle cx="85"  cy="282" r="4"/>
-    <circle cx="125" cy="291" r="4"/>
-    <circle cx="165" cy="259" r="4"/>
-    <circle cx="205" cy="268" r="4"/>
-    <circle cx="245" cy="244" r="4"/>
-    <circle cx="285" cy="262" r="4"/>
-    <circle cx="325" cy="237" r="4"/>
-    <circle cx="365" cy="248" r="4"/>
-    <circle cx="405" cy="217" r="4"/>
-    <circle cx="445" cy="231" r="4"/>
-    <circle cx="485" cy="203" r="4"/>
-    <circle cx="525" cy="219" r="4"/>
-    <circle cx="565" cy="184" r="4"/>
-    <circle cx="605" cy="198" r="4"/>
-    <circle cx="650" cy="164" r="5"/>
+  <g fill="#0d1117"
+     stroke="#3fb950"
+     stroke-width="2">
+
+    <circle cx="42"  cy="265" r="4"/>
+    <circle cx="96"  cy="246" r="4"/>
+    <circle cx="150" cy="254" r="4"/>
+    <circle cx="204" cy="223" r="4"/>
+    <circle cx="258" cy="232" r="4"/>
+    <circle cx="312" cy="210" r="4"/>
+    <circle cx="366" cy="222" r="4"/>
+    <circle cx="420" cy="193" r="4"/>
+    <circle cx="474" cy="204" r="4"/>
+    <circle cx="528" cy="174" r="4"/>
+    <circle cx="582" cy="188" r="4"/>
+    <circle cx="636" cy="148" r="5"/>
+
   </g>
 
 
-  <!-- ===================================================== -->
-  <!-- GRAPH LABEL -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
+  <!-- CHART LABELS -->
+  <!-- ================================================= -->
 
-  <text
-    x="34"
-    y="344"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
-    LAST 12 MONTHS
+  <text x="34"
+        y="304"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9.5">
+    SEP 2025
   </text>
 
-  <text
-    x="650"
-    y="344"
-    text-anchor="end"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
-    ACTIVITY TREND
+  <text x="360"
+        y="304"
+        text-anchor="middle"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9.5">
+    MAR 2026
+  </text>
+
+  <text x="686"
+        y="304"
+        text-anchor="end"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9.5">
+    SEP 2026
   </text>
 
 
-  <!-- ===================================================== -->
-  <!-- CENTER DIVIDER -->
-  <!-- ===================================================== -->
-
-  <line
-    x1="710"
-    y1="92"
-    x2="710"
-    y2="365"
-    stroke="#30363d"
-  />
+  <!-- Main divider -->
+  <line x1="28"
+        y1="324"
+        x2="692"
+        y2="324"
+        stroke="#30363d"/>
 
 
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
   <!-- CURRENT STREAK -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
 
-  <text
-    x="755"
-    y="101"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="12"
-    letter-spacing="1.7"
-  >
+  <text x="34"
+        y="351"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.4">
     CURRENT STREAK
   </text>
 
 
-  <!-- Animated pulse ring -->
-  <circle
-    cx="830"
-    cy="181"
-    r="51"
-    fill="none"
-    stroke="#3fb950"
-    stroke-width="2"
-    opacity="0.25"
-  >
+  <!-- Animated outer ring -->
+  <circle cx="96"
+          cy="420"
+          r="44"
+          fill="none"
+          stroke="#3fb950"
+          stroke-width="2"
+          opacity="0.22">
+
     <animate
       attributeName="r"
-      values="50;61;50"
+      values="43;49;43"
       dur="2.5s"
-      repeatCount="indefinite"
-    />
+      repeatCount="indefinite"/>
 
     <animate
       attributeName="opacity"
-      values="0.30;0.03;0.30"
+      values="0.28;0.04;0.28"
       dur="2.5s"
-      repeatCount="indefinite"
-    />
+      repeatCount="indefinite"/>
+
   </circle>
 
 
-  <!-- Main streak ring -->
-  <circle
-    cx="830"
-    cy="181"
-    r="47"
-    fill="#11161d"
-    stroke="#3fb950"
-    stroke-width="3"
-  />
+  <!-- Main ring -->
+  <circle cx="96"
+          cy="420"
+          r="39"
+          fill="#11161d"
+          stroke="#3fb950"
+          stroke-width="3"/>
 
 
-  <!-- Streak number -->
-  <text
-    x="830"
-    y="190"
-    text-anchor="middle"
-    fill="#3fb950"
-    font-family="Arial, sans-serif"
-    font-size="31"
-    font-weight="700"
-  >
+  <!-- Current streak value -->
+  <text x="96"
+        y="429"
+        text-anchor="middle"
+        fill="#3fb950"
+        font-family="Arial, sans-serif"
+        font-size="27"
+        font-weight="700">
     44
   </text>
 
-  <text
-    x="830"
-    y="216"
-    text-anchor="middle"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10"
-    letter-spacing="1"
-  >
+  <text x="96"
+        y="449"
+        text-anchor="middle"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="8.5"
+        letter-spacing="0.7">
     DAYS
   </text>
 
 
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
   <!-- LONGEST STREAK -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
 
-  <text
-    x="930"
-    y="151"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10"
-    letter-spacing="1.4"
-  >
+  <text x="190"
+        y="385"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="10"
+        letter-spacing="1.1">
     LONGEST STREAK
   </text>
 
-  <text
-    x="930"
-    y="181"
-    fill="#f0f6fc"
-    font-family="Arial, sans-serif"
-    font-size="24"
-    font-weight="600"
-  >
+  <text x="190"
+        y="416"
+        fill="#f0f6fc"
+        font-family="Arial, sans-serif"
+        font-size="24"
+        font-weight="700">
     44 days
   </text>
 
-  <text
-    x="930"
-    y="207"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
+  <text x="190"
+        y="444"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9.5">
     Aug 6 - Sep 18
   </text>
 
 
-  <!-- ===================================================== -->
-  <!-- LANGUAGE SECTION -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
+  <!-- VERTICAL DIVIDER -->
+  <!-- ================================================= -->
 
-  <line
-    x1="755"
-    y1="250"
-    x2="1155"
-    y2="250"
-    stroke="#30363d"
-  />
+  <line x1="340"
+        y1="348"
+        x2="340"
+        y2="492"
+        stroke="#30363d"/>
 
-  <text
-    x="755"
-    y="280"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="12"
-    letter-spacing="1.7"
-  >
+
+  <!-- ================================================= -->
+  <!-- MOST USED LANGUAGES -->
+  <!-- ================================================= -->
+
+  <text x="374"
+        y="351"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.4">
     MOST USED LANGUAGES
   </text>
 
 
-  <!-- ===================================================== -->
-  <!-- PYTHON -->
-  <!-- ===================================================== -->
-
-  <text
-    x="755"
-    y="312"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="12"
-  >
+  <!-- Python -->
+  <text x="374"
+        y="401"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="12">
     Python
   </text>
 
-  <rect
-    x="855"
-    y="303"
-    width="250"
-    height="6"
-    rx="3"
-    fill="#21262d"
-  />
+  <rect x="486"
+        y="392"
+        width="150"
+        height="7"
+        rx="3.5"
+        fill="#21262d"/>
 
-  <rect
-    x="855"
-    y="303"
-    width="205"
-    height="6"
-    rx="3"
-    fill="#58a6ff"
-  />
+  <rect x="486"
+        y="392"
+        width="114"
+        height="7"
+        rx="3.5"
+        fill="#58a6ff"/>
 
-  <text
-    x="1145"
-    y="312"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="676"
+        y="401"
+        text-anchor="end"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="10.5">
     38%
   </text>
 
 
-  <!-- ===================================================== -->
-  <!-- JUPYTER -->
-  <!-- ===================================================== -->
-
-  <text
-    x="755"
-    y="339"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="12"
-  >
+  <!-- Jupyter -->
+  <text x="374"
+        y="437"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="12">
     Jupyter
   </text>
 
-  <rect
-    x="855"
-    y="330"
-    width="250"
-    height="6"
-    rx="3"
-    fill="#21262d"
-  />
+  <rect x="486"
+        y="428"
+        width="150"
+        height="7"
+        rx="3.5"
+        fill="#21262d"/>
 
-  <rect
-    x="855"
-    y="330"
-    width="164"
-    height="6"
-    rx="3"
-    fill="#3fb950"
-  />
+  <rect x="486"
+        y="428"
+        width="81"
+        height="7"
+        rx="3.5"
+        fill="#3fb950"/>
 
-  <text
-    x="1145"
-    y="339"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="676"
+        y="437"
+        text-anchor="end"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="10.5">
     27%
   </text>
 
 
-  <!-- ===================================================== -->
-  <!-- TYPESCRIPT -->
-  <!-- ===================================================== -->
-
-  <text
-    x="755"
-    y="366"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="12"
-  >
+  <!-- TypeScript -->
+  <text x="374"
+        y="473"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="12">
     TypeScript
   </text>
 
-  <rect
-    x="855"
-    y="357"
-    width="250"
-    height="6"
-    rx="3"
-    fill="#21262d"
-  />
+  <rect x="486"
+        y="464"
+        width="150"
+        height="7"
+        rx="3.5"
+        fill="#21262d"/>
 
-  <rect
-    x="855"
-    y="357"
-    width="132"
-    height="6"
-    rx="3"
-    fill="#58a6ff"
-  />
+  <rect x="486"
+        y="464"
+        width="63"
+        height="7"
+        rx="3.5"
+        fill="#a371f7"/>
 
-  <text
-    x="1145"
-    y="366"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="676"
+        y="473"
+        text-anchor="end"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="10.5">
     21%
   </text>
 
 
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
   <!-- FOOTER -->
-  <!-- ===================================================== -->
+  <!-- ================================================= -->
 
-  <line
-    x1="34"
-    y1="388"
-    x2="1166"
-    y2="388"
-    stroke="#30363d"
-  />
+  <line x1="28"
+        y1="500"
+        x2="692"
+        y2="500"
+        stroke="#30363d"/>
 
-  <circle
-    cx="40"
-    cy="410"
-    r="3"
-    fill="#3fb950"
-  />
-
-  <text
-    x="52"
-    y="414"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
-    GITHUB DATA
-  </text>
-
-  <text
-    x="1166"
-    y="414"
-    text-anchor="end"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
-    LAST SYNC · AUTOMATED
+  <text x="34"
+        y="515"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9">
+    AUTO UPDATED
   </text>
 
 </svg>
