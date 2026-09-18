@@ -133,7 +133,11 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 ## GitHub Activity
 
 <p align="center">
-  <img src="./assets/github-terminal.svg" width="100%" alt="GitHub Trader Terminal" />
+  <img
+    src="https://raw.githubusercontent.com/maulidacy/maulidacy/main/assets/github-terminal.svg"
+    width="100%"
+    alt="Maulida GitHub Developer Terminal"
+  />
 </p>
 
 ---
