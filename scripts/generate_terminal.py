@@ -26,11 +26,14 @@ HEADERS = {
 # API HELPERS
 # ============================================================
 
+
 def graphql(query, variables):
-    payload = json.dumps({
-        "query": query,
-        "variables": variables,
-    }).encode("utf-8")
+    payload = json.dumps(
+        {
+            "query": query,
+            "variables": variables,
+        }
+    ).encode("utf-8")
 
     request = urllib.request.Request(
         GRAPHQL_URL,
@@ -64,6 +67,7 @@ def rest(url):
 # CONTRIBUTION DATA
 # ============================================================
 
+
 def get_account_created_at():
     query = """
     query($login: String!) {
@@ -88,7 +92,6 @@ def get_contributions():
     now = datetime.now(timezone.utc)
 
     all_days = {}
-
     start = created_at
 
     query = """
@@ -139,8 +142,9 @@ def get_contributions():
 
 
 # ============================================================
-# STREAK
+# STREAKS
 # ============================================================
+
 
 def calculate_streaks(days):
     ordered = sorted(days.items())
@@ -165,27 +169,32 @@ def calculate_streaks(days):
                 longest = running
                 longest_start = running_start
                 longest_end = date_value
-
         else:
             running = 0
             running_start = None
 
-    # Current streak
-    today = datetime.now(timezone.utc).date()
+    # Current streak uses WIB so the date boundary matches the profile owner.
+    today = datetime.now(WIB).date()
     pointer = today
 
-    # Jika hari ini belum commit, streak kemarin tetap dihitung.
+    # If there is no contribution yet today, yesterday can still be the
+    # latest day in an active streak.
     if days.get(pointer.isoformat(), 0) == 0:
         pointer -= timedelta(days=1)
 
+    current_end = pointer if days.get(pointer.isoformat(), 0) > 0 else None
     current = 0
 
     while days.get(pointer.isoformat(), 0) > 0:
         current += 1
         pointer -= timedelta(days=1)
 
+    current_start = pointer + timedelta(days=1) if current > 0 else None
+
     return (
         current,
+        current_start,
+        current_end,
         longest,
         longest_start,
         longest_end,
@@ -204,10 +213,7 @@ def format_streak_period(start, end):
         return "-"
 
     if start.year == end.year:
-        return (
-            f"{format_date(start)} - "
-            f"{format_date(end)}"
-        )
+        return f"{format_date(start)} - {format_date(end)}"
 
     return (
         f"{format_date(start)}, {start.year} - "
@@ -215,23 +221,24 @@ def format_streak_period(start, end):
     )
 
 
+def format_current_streak_period(start):
+    if start is None:
+        return "NO ACTIVE STREAK"
+
+    return f"{format_date(start)} - PRESENT"
+
+
 # ============================================================
 # ACTIVITY TREND
 # ============================================================
 
+
 def calculate_activity_trend(days):
-    """
-    Bandingkan 30 hari terakhir dengan 30 hari sebelumnya.
+    """Compare the latest 30 days with the preceding 30 days."""
 
-    Naik   -> hijau
-    Turun  -> merah
-    Stabil -> amber
-    """
-
-    today = datetime.now(timezone.utc).date()
+    today = datetime.now(WIB).date()
 
     recent_start = today - timedelta(days=29)
-
     previous_start = today - timedelta(days=59)
     previous_end = today - timedelta(days=30)
 
@@ -243,7 +250,6 @@ def calculate_activity_trend(days):
 
         if recent_start <= date_value <= today:
             recent_total += count
-
         elif previous_start <= date_value <= previous_end:
             previous_total += count
 
@@ -289,9 +295,9 @@ def calculate_activity_trend(days):
 # LANGUAGE DATA
 # ============================================================
 
+
 def get_repositories():
     repositories = []
-
     page = 1
 
     while True:
@@ -318,11 +324,10 @@ def get_repositories():
 
 def get_languages():
     repositories = get_repositories()
-
     totals = defaultdict(int)
 
     for repo in repositories:
-        # Fork tidak dihitung agar lebih mewakili project sendiri.
+        # Ignore forks so the card reflects the owner's own projects.
         if repo.get("fork"):
             continue
 
@@ -336,7 +341,7 @@ def get_languages():
     if total_size == 0:
         return []
 
-    # Hanya top 3 supaya layout tetap clean.
+    # Top 3 keeps the right side clean and avoids footer collisions.
     top = sorted(
         totals.items(),
         key=lambda item: item[1],
@@ -356,11 +361,11 @@ def get_languages():
 # MONTHLY CHART
 # ============================================================
 
+
 def monthly_activity(days):
-    now = datetime.now(timezone.utc)
+    now = datetime.now(WIB)
 
     months = []
-
     year = now.year
     month = now.month
 
@@ -368,7 +373,6 @@ def monthly_activity(days):
         months.append((year, month))
 
         month -= 1
-
         if month == 0:
             month = 12
             year -= 1
@@ -397,17 +401,14 @@ def monthly_activity(days):
 def chart_coordinates(values):
     x_start = 45
     x_end = 650
-
     y_top = 170
     y_bottom = 315
 
     maximum = max(values) if values else 1
-
     if maximum == 0:
         maximum = 1
 
     coordinates = []
-
     count = len(values)
 
     for index, value in enumerate(values):
@@ -476,12 +477,7 @@ def chart_area(values):
 
 
 def month_label(year, month):
-    date_value = datetime(
-        year,
-        month,
-        1,
-    )
-
+    date_value = datetime(year, month, 1)
     return date_value.strftime("%b %Y").upper()
 
 
@@ -489,9 +485,9 @@ def month_label(year, month):
 # LANGUAGE SVG
 # ============================================================
 
+
 def language_svg(languages):
     rows = []
-
     y = 312
 
     colors = [
@@ -500,15 +496,13 @@ def language_svg(languages):
         "#a371f7",
     ]
 
-    bar_width = 250
+    # Extra room for names such as "Jupyter Notebook".
+    bar_x = 900
+    bar_width = 185
 
     for index, (name, percentage) in enumerate(languages):
         safe_name = html.escape(name)
-
-        # 100% = full bar.
-        width = (
-            percentage / 100
-        ) * bar_width
+        width = (percentage / 100) * bar_width
 
         rows.append(
             f"""
@@ -517,13 +511,13 @@ def language_svg(languages):
     y="{y}"
     fill="#c9d1d9"
     font-family="monospace"
-    font-size="12"
+    font-size="11"
   >
     {safe_name}
   </text>
 
   <rect
-    x="855"
+    x="{bar_x}"
     y="{y - 9}"
     width="{bar_width}"
     height="6"
@@ -532,7 +526,7 @@ def language_svg(languages):
   />
 
   <rect
-    x="855"
+    x="{bar_x}"
     y="{y - 9}"
     width="{width:.1f}"
     height="6"
@@ -562,9 +556,12 @@ def language_svg(languages):
 # SVG GENERATOR
 # ============================================================
 
+
 def generate_svg(
     total,
     current_streak,
+    current_start,
+    current_end,
     longest_streak,
     longest_start,
     longest_end,
@@ -574,14 +571,10 @@ def generate_svg(
     trend,
 ):
     points = chart_points(monthly_values)
-
-    circles = chart_circles(
-        monthly_values,
-        trend["color"],
-    )
-
+    circles = chart_circles(monthly_values, trend["color"])
     area_path = chart_area(monthly_values)
 
+    current_period = format_current_streak_period(current_start)
     longest_period = format_streak_period(
         longest_start,
         longest_end,
@@ -592,7 +585,6 @@ def generate_svg(
     last_label = month_label(*months[-1])
 
     change = abs(trend["change"])
-
     trend_text = (
         f"{trend['symbol']} "
         f"{change:.1f}% "
@@ -634,10 +626,7 @@ def generate_svg(
   viewBox="0 0 1200 430"
 >
 
-  <!-- =================================================== -->
-  <!-- BACKGROUND -->
-  <!-- =================================================== -->
-
+  <!-- Background -->
   <rect
     width="1200"
     height="430"
@@ -657,10 +646,7 @@ def generate_svg(
   />
 
 
-  <!-- =================================================== -->
-  <!-- STATUS -->
-  <!-- =================================================== -->
-
+  <!-- Status -->
   <text
     x="34"
     y="42"
@@ -705,10 +691,7 @@ def generate_svg(
   />
 
 
-  <!-- =================================================== -->
-  <!-- CONTRIBUTIONS -->
-  <!-- =================================================== -->
-
+  <!-- Contributions -->
   <text
     x="34"
     y="101"
@@ -752,10 +735,7 @@ def generate_svg(
   </text>
 
 
-  <!-- =================================================== -->
-  <!-- CHART -->
-  <!-- =================================================== -->
-
+  <!-- Chart -->
   <g
     stroke="#21262d"
     stroke-width="1"
@@ -816,10 +796,7 @@ def generate_svg(
   </text>
 
 
-  <!-- =================================================== -->
-  <!-- DIVIDER -->
-  <!-- =================================================== -->
-
+  <!-- Divider -->
   <line
     x1="710"
     y1="92"
@@ -829,10 +806,7 @@ def generate_svg(
   />
 
 
-  <!-- =================================================== -->
-  <!-- CURRENT STREAK -->
-  <!-- =================================================== -->
-
+  <!-- Current streak -->
   <text
     x="755"
     y="101"
@@ -846,7 +820,7 @@ def generate_svg(
 
   <circle
     cx="830"
-    cy="181"
+    cy="176"
     r="51"
     fill="none"
     stroke="{streak_color}"
@@ -858,7 +832,7 @@ def generate_svg(
 
   <circle
     cx="830"
-    cy="181"
+    cy="176"
     r="47"
     fill="#11161d"
     stroke="{streak_color}"
@@ -867,7 +841,7 @@ def generate_svg(
 
   <text
     x="830"
-    y="190"
+    y="185"
     text-anchor="middle"
     fill="{streak_color}"
     font-family="Arial, sans-serif"
@@ -879,7 +853,7 @@ def generate_svg(
 
   <text
     x="830"
-    y="216"
+    y="210"
     text-anchor="middle"
     fill="#8b949e"
     font-family="monospace"
@@ -889,14 +863,22 @@ def generate_svg(
     DAYS
   </text>
 
+  <text
+    x="830"
+    y="239"
+    text-anchor="middle"
+    fill="#6e7681"
+    font-family="monospace"
+    font-size="9"
+  >
+    {current_period}
+  </text>
 
-  <!-- =================================================== -->
-  <!-- LONGEST STREAK -->
-  <!-- =================================================== -->
 
+  <!-- Longest streak -->
   <text
     x="930"
-    y="151"
+    y="146"
     fill="#8b949e"
     font-family="monospace"
     font-size="10"
@@ -907,7 +889,7 @@ def generate_svg(
 
   <text
     x="930"
-    y="181"
+    y="176"
     fill="#f0f6fc"
     font-family="Arial, sans-serif"
     font-size="24"
@@ -918,7 +900,7 @@ def generate_svg(
 
   <text
     x="930"
-    y="207"
+    y="202"
     fill="#6e7681"
     font-family="monospace"
     font-size="10"
@@ -927,21 +909,18 @@ def generate_svg(
   </text>
 
 
-  <!-- =================================================== -->
-  <!-- LANGUAGES -->
-  <!-- =================================================== -->
-
+  <!-- Languages -->
   <line
     x1="755"
-    y1="250"
+    y1="260"
     x2="1155"
-    y2="250"
+    y2="260"
     stroke="#30363d"
   />
 
   <text
     x="755"
-    y="280"
+    y="288"
     fill="#8b949e"
     font-family="monospace"
     font-size="12"
@@ -953,10 +932,7 @@ def generate_svg(
   {language_svg(languages)}
 
 
-  <!-- =================================================== -->
-  <!-- FOOTER -->
-  <!-- =================================================== -->
-
+  <!-- Footer -->
   <line
     x1="34"
     y1="388"
@@ -1001,15 +977,17 @@ def generate_svg(
 # MAIN
 # ============================================================
 
+
 def main():
     print("Fetching GitHub contributions...")
 
     days = get_contributions()
-
     total = sum(days.values())
 
     (
         current_streak,
+        current_start,
+        current_end,
         longest_streak,
         longest_start,
         longest_end,
@@ -1018,7 +996,6 @@ def main():
     trend = calculate_activity_trend(days)
 
     print("Fetching language statistics...")
-
     languages = get_languages()
 
     months, monthly_values = monthly_activity(days)
@@ -1026,6 +1003,8 @@ def main():
     svg = generate_svg(
         total=total,
         current_streak=current_streak,
+        current_start=current_start,
+        current_end=current_end,
         longest_streak=longest_streak,
         longest_start=longest_start,
         longest_end=longest_end,
@@ -1055,6 +1034,10 @@ def main():
     print("Output:", output_path)
     print("Total contributions:", total)
     print("Current streak:", current_streak)
+    print(
+        "Current period:",
+        format_current_streak_period(current_start),
+    )
     print("Longest streak:", longest_streak)
     print(
         "Longest period:",
