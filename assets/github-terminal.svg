@@ -1,1 +1,843 @@
+<svg
+  width="1200"
+  height="560"
+  viewBox="0 0 1200 560"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    text {
+      font-family: "Courier New", monospace;
+    }
 
+    .live-dot {
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .25; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: .75; }
+      50% { opacity: 1; }
+    }
+  </style>
+
+  <!-- BACKGROUND -->
+  <rect
+    x="1"
+    y="1"
+    width="1198"
+    height="558"
+    rx="14"
+    fill="#0B0F14"
+    stroke="#30363D"
+    stroke-width="2"
+  />
+
+  <!-- ================= HEADER ================= -->
+
+  <rect
+    x="1"
+    y="1"
+    width="1198"
+    height="64"
+    rx="14"
+    fill="#11161D"
+  />
+
+  <path d="M1 51V65H1199V51" fill="#11161D"/>
+
+  <line
+    x1="1"
+    y1="65"
+    x2="1199"
+    y2="65"
+    stroke="#30363D"
+  />
+
+  <text x="28" y="39" font-size="16" fill="#94A3B8">
+    MARKET
+  </text>
+
+  <text x="94" y="39" font-size="16" fill="#E5EEF9" font-weight="700">
+    GITHUB
+  </text>
+
+  <text x="190" y="39" font-size="15" fill="#E5EEF9">
+    PYTHON
+  </text>
+
+  <text x="255" y="39" font-size="15" fill="#22C55E">
+    ▲ ACTIVE
+  </text>
+
+  <text x="365" y="39" font-size="15" fill="#E5EEF9">
+    TYPESCRIPT
+  </text>
+
+  <text x="465" y="39" font-size="15" fill="#EF4444">
+    ▼ WATCH
+  </text>
+
+  <text x="555" y="39" font-size="15" fill="#E5EEF9">
+    JUPYTER
+  </text>
+
+  <text x="625" y="39" font-size="15" fill="#22C55E">
+    ▲ ACTIVE
+  </text>
+
+  <circle
+    class="live-dot"
+    cx="1032"
+    cy="33"
+    r="5"
+    fill="#22C55E"
+  />
+
+  <text x="1045" y="39" font-size="15" fill="#22C55E">
+    LIVE
+  </text>
+
+  <text x="1100" y="39" font-size="15" fill="#E5EEF9">
+    BUILD
+  </text>
+
+  <!-- DIVIDER -->
+  <line
+    x1="780"
+    y1="65"
+    x2="780"
+    y2="500"
+    stroke="#30363D"
+  />
+
+  <!-- ================= LEFT ================= -->
+
+  <text
+    x="34"
+    y="105"
+    font-size="14"
+    letter-spacing="2"
+    fill="#94A3B8"
+  >
+    CONTRIBUTION INDEX
+  </text>
+
+  <text
+    x="34"
+    y="156"
+    font-size="39"
+    fill="#E5EEF9"
+    font-weight="700"
+  >
+    1,219
+  </text>
+
+  <text
+    x="170"
+    y="156"
+    font-size="16"
+    fill="#94A3B8"
+  >
+    TOTAL CONTRIBUTIONS
+  </text>
+
+  <text
+    x="34"
+    y="184"
+    font-size="13"
+    fill="#22C55E"
+  >
+    ▲ DEVELOPMENT ACTIVITY
+  </text>
+
+  <!-- GRID -->
+
+  <g stroke="#202833" stroke-width="1">
+    <line x1="34" y1="225" x2="746" y2="225"/>
+    <line x1="34" y1="270" x2="746" y2="270"/>
+    <line x1="34" y1="315" x2="746" y2="315"/>
+    <line x1="34" y1="360" x2="746" y2="360"/>
+
+    <line x1="120" y1="205" x2="120" y2="360"/>
+    <line x1="240" y1="205" x2="240" y2="360"/>
+    <line x1="360" y1="205" x2="360" y2="360"/>
+    <line x1="480" y1="205" x2="480" y2="360"/>
+    <line x1="600" y1="205" x2="600" y2="360"/>
+    <line x1="720" y1="205" x2="720" y2="360"/>
+  </g>
+
+  <!-- ===== CANDLE 1 GREEN ===== -->
+
+  <line
+    x1="70"
+    y1="305"
+    x2="70"
+    y2="355"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="62"
+    y="316"
+    width="16"
+    height="24"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 2 GREEN -->
+
+  <line
+    x1="105"
+    y1="285"
+    x2="105"
+    y2="340"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="97"
+    y="298"
+    width="16"
+    height="25"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 3 RED -->
+
+  <line
+    x1="140"
+    y1="294"
+    x2="140"
+    y2="350"
+    stroke="#EF4444"
+    stroke-width="2"
+  />
+
+  <rect
+    x="132"
+    y="311"
+    width="16"
+    height="22"
+    fill="#EF4444"
+  />
+
+  <!-- CANDLE 4 GREEN -->
+
+  <line
+    x1="175"
+    y1="263"
+    x2="175"
+    y2="327"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="167"
+    y="275"
+    width="16"
+    height="34"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 5 GREEN -->
+
+  <line
+    x1="210"
+    y1="245"
+    x2="210"
+    y2="320"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="202"
+    y="258"
+    width="16"
+    height="35"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 6 RED -->
+
+  <line
+    x1="245"
+    y1="257"
+    x2="245"
+    y2="330"
+    stroke="#EF4444"
+    stroke-width="2"
+  />
+
+  <rect
+    x="237"
+    y="274"
+    width="16"
+    height="32"
+    fill="#EF4444"
+  />
+
+  <!-- CANDLE 7 RED -->
+
+  <line
+    x1="280"
+    y1="278"
+    x2="280"
+    y2="348"
+    stroke="#EF4444"
+    stroke-width="2"
+  />
+
+  <rect
+    x="272"
+    y="292"
+    width="16"
+    height="34"
+    fill="#EF4444"
+  />
+
+  <!-- CANDLE 8 GREEN -->
+
+  <line
+    x1="315"
+    y1="267"
+    x2="315"
+    y2="335"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="307"
+    y="281"
+    width="16"
+    height="30"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 9 GREEN -->
+
+  <line
+    x1="350"
+    y1="247"
+    x2="350"
+    y2="320"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="342"
+    y="262"
+    width="16"
+    height="34"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 10 GREEN -->
+
+  <line
+    x1="385"
+    y1="232"
+    x2="385"
+    y2="305"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="377"
+    y="248"
+    width="16"
+    height="34"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 11 RED -->
+
+  <line
+    x1="420"
+    y1="250"
+    x2="420"
+    y2="330"
+    stroke="#EF4444"
+    stroke-width="2"
+  />
+
+  <rect
+    x="412"
+    y="269"
+    width="16"
+    height="35"
+    fill="#EF4444"
+  />
+
+  <!-- CANDLE 12 GREEN -->
+
+  <line
+    x1="455"
+    y1="238"
+    x2="455"
+    y2="315"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="447"
+    y="253"
+    width="16"
+    height="37"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 13 GREEN -->
+
+  <line
+    x1="490"
+    y1="215"
+    x2="490"
+    y2="298"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="482"
+    y="230"
+    width="16"
+    height="40"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 14 RED -->
+
+  <line
+    x1="525"
+    y1="228"
+    x2="525"
+    y2="318"
+    stroke="#EF4444"
+    stroke-width="2"
+  />
+
+  <rect
+    x="517"
+    y="250"
+    width="16"
+    height="37"
+    fill="#EF4444"
+  />
+
+  <!-- CANDLE 15 GREEN -->
+
+  <line
+    x1="560"
+    y1="205"
+    x2="560"
+    y2="300"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="552"
+    y="223"
+    width="16"
+    height="46"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 16 GREEN -->
+
+  <line
+    x1="600"
+    y1="188"
+    x2="600"
+    y2="285"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="592"
+    y="208"
+    width="16"
+    height="49"
+    fill="#22C55E"
+  />
+
+  <!-- CANDLE 17 RED -->
+
+  <line
+    x1="640"
+    y1="198"
+    x2="640"
+    y2="289"
+    stroke="#EF4444"
+    stroke-width="2"
+  />
+
+  <rect
+    x="632"
+    y="216"
+    width="16"
+    height="42"
+    fill="#EF4444"
+  />
+
+  <!-- CANDLE 18 GREEN -->
+
+  <line
+    x1="680"
+    y1="170"
+    x2="680"
+    y2="271"
+    stroke="#22C55E"
+    stroke-width="2"
+  />
+
+  <rect
+    x="672"
+    y="189"
+    width="16"
+    height="54"
+    fill="#22C55E"
+  />
+
+  <!-- TREND LINE -->
+
+  <polyline
+    class="pulse"
+    points="
+      70,325
+      105,309
+      140,322
+      175,288
+      210,271
+      245,288
+      280,310
+      315,295
+      350,277
+      385,263
+      420,284
+      455,270
+      490,246
+      525,270
+      560,242
+      600,225
+      640,238
+      680,210
+    "
+    fill="none"
+    stroke="#CBD5E1"
+    stroke-width="1.5"
+    opacity=".55"
+  />
+
+  <!-- DATE LABELS -->
+
+  <text x="34" y="383" font-size="11" fill="#64748B">
+    SEP 2023
+  </text>
+
+  <text x="355" y="383" font-size="11" fill="#64748B">
+    2025
+  </text>
+
+  <text x="665" y="383" font-size="11" fill="#64748B">
+    SEP 2026
+  </text>
+
+  <!-- LEFT METRICS -->
+
+  <line
+    x1="34"
+    y1="406"
+    x2="746"
+    y2="406"
+    stroke="#30363D"
+  />
+
+  <text x="34" y="437" font-size="12" letter-spacing="2" fill="#94A3B8">
+    CURRENT STREAK
+  </text>
+
+  <text x="34" y="473" font-size="28" font-weight="700" fill="#22C55E">
+    44D
+  </text>
+
+  <text x="225" y="437" font-size="12" letter-spacing="2" fill="#94A3B8">
+    LONGEST STREAK
+  </text>
+
+  <text x="225" y="473" font-size="28" font-weight="700" fill="#E5EEF9">
+    44D
+  </text>
+
+  <text x="420" y="437" font-size="12" letter-spacing="2" fill="#94A3B8">
+    MODE
+  </text>
+
+  <text x="420" y="473" font-size="25" font-weight="700" fill="#F59E0B">
+    BUILD
+  </text>
+
+  <text x="560" y="437" font-size="12" letter-spacing="2" fill="#94A3B8">
+    SIGNAL
+  </text>
+
+  <text x="560" y="473" font-size="22" font-weight="700" fill="#22C55E">
+    BULLISH
+  </text>
+
+  <!-- ================= RIGHT SIDE ================= -->
+
+  <text
+    x="814"
+    y="105"
+    font-size="14"
+    letter-spacing="2"
+    fill="#94A3B8"
+  >
+    LANGUAGE ALLOCATION
+  </text>
+
+  <!-- PYTHON -->
+
+  <text x="814" y="151" font-size="15" fill="#E5EEF9">
+    PYTHON
+  </text>
+
+  <text x="940" y="151" font-size="13" fill="#22C55E">
+    ▲
+  </text>
+
+  <rect
+    x="985"
+    y="140"
+    width="165"
+    height="7"
+    rx="3"
+    fill="#202833"
+  />
+
+  <rect
+    x="985"
+    y="140"
+    width="145"
+    height="7"
+    rx="3"
+    fill="#22C55E"
+  />
+
+  <!-- JUPYTER -->
+
+  <text x="814" y="197" font-size="15" fill="#E5EEF9">
+    JUPYTER
+  </text>
+
+  <text x="940" y="197" font-size="13" fill="#22C55E">
+    ▲
+  </text>
+
+  <rect
+    x="985"
+    y="186"
+    width="165"
+    height="7"
+    rx="3"
+    fill="#202833"
+  />
+
+  <rect
+    x="985"
+    y="186"
+    width="117"
+    height="7"
+    rx="3"
+    fill="#22C55E"
+  />
+
+  <!-- TYPESCRIPT -->
+
+  <text x="814" y="243" font-size="15" fill="#E5EEF9">
+    TYPESCRIPT
+  </text>
+
+  <text x="940" y="243" font-size="13" fill="#EF4444">
+    ▼
+  </text>
+
+  <rect
+    x="985"
+    y="232"
+    width="165"
+    height="7"
+    rx="3"
+    fill="#202833"
+  />
+
+  <rect
+    x="985"
+    y="232"
+    width="100"
+    height="7"
+    rx="3"
+    fill="#EF4444"
+  />
+
+  <!-- HTML -->
+
+  <text x="814" y="289" font-size="15" fill="#E5EEF9">
+    HTML
+  </text>
+
+  <text x="940" y="289" font-size="13" fill="#EF4444">
+    ▼
+  </text>
+
+  <rect
+    x="985"
+    y="278"
+    width="165"
+    height="7"
+    rx="3"
+    fill="#202833"
+  />
+
+  <rect
+    x="985"
+    y="278"
+    width="70"
+    height="7"
+    rx="3"
+    fill="#EF4444"
+  />
+
+  <!-- JAVA -->
+
+  <text x="814" y="335" font-size="15" fill="#E5EEF9">
+    JAVA
+  </text>
+
+  <text x="940" y="335" font-size="13" fill="#22C55E">
+    ▲
+  </text>
+
+  <rect
+    x="985"
+    y="324"
+    width="165"
+    height="7"
+    rx="3"
+    fill="#202833"
+  />
+
+  <rect
+    x="985"
+    y="324"
+    width="51"
+    height="7"
+    rx="3"
+    fill="#22C55E"
+  />
+
+  <!-- SIGNAL -->
+
+  <line
+    x1="814"
+    y1="375"
+    x2="1150"
+    y2="375"
+    stroke="#30363D"
+  />
+
+  <text
+    x="814"
+    y="409"
+    font-size="14"
+    letter-spacing="2"
+    fill="#94A3B8"
+  >
+    DEVELOPER SIGNAL
+  </text>
+
+  <circle cx="820" cy="447" r="5" fill="#22C55E"/>
+  <text x="838" y="452" font-size="16" fill="#E5EEF9">
+    Learning
+  </text>
+
+  <circle cx="820" cy="478" r="5" fill="#22C55E"/>
+  <text x="838" y="483" font-size="16" fill="#E5EEF9">
+    Building
+  </text>
+
+  <circle cx="982" cy="447" r="5" fill="#EF4444"/>
+  <text x="1000" y="452" font-size="16" fill="#E5EEF9">
+    Debugging
+  </text>
+
+  <circle cx="982" cy="478" r="5" fill="#F59E0B"/>
+  <text x="1000" y="483" font-size="16" fill="#E5EEF9">
+    Shipping
+  </text>
+
+  <!-- ================= FOOTER ================= -->
+
+  <rect
+    x="1"
+    y="500"
+    width="1198"
+    height="59"
+    rx="14"
+    fill="#11161D"
+  />
+
+  <path d="M1 500V514H1199V500" fill="#11161D"/>
+
+  <line
+    x1="1"
+    y1="500"
+    x2="1199"
+    y2="500"
+    stroke="#30363D"
+  />
+
+  <text x="28" y="536" font-size="14" fill="#94A3B8">
+    MAULIDACY / DEV TERMINAL
+  </text>
+
+  <circle
+    class="live-dot"
+    cx="833"
+    cy="531"
+    r="4"
+    fill="#22C55E"
+  />
+
+  <text x="847" y="536" font-size="13" fill="#64748B">
+    MARKET OPEN
+  </text>
+
+  <text
+    x="979"
+    y="536"
+    font-size="13"
+    fill="#94A3B8"
+  >
+    KEEP LEARNING · KEEP BUILDING
+  </text>
+</svg>
