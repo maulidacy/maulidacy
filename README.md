@@ -132,21 +132,9 @@ I'm particularly interested in **AI × Software Engineering**: building models, 
 
 ## GitHub Activity
 
-<div align="center">
-
-  <img
-    height="190"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=maulidacy&theme=github_dark"
-    alt="Languages"
-  />
-  &nbsp;&nbsp;
-  <img
-    height="190"
-    src="https://github-readme-stats-fast.vercel.app/api/streak?username=maulidacy&theme=github_dark"
-    alt="GitHub Streak"
-  />
-
-</div>
+<p align="center">
+  <img src="./assets/github-terminal.svg" width="100%" alt="GitHub Trader Terminal" />
+</p>
 
 ---
 
