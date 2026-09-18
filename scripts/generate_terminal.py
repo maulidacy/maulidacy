@@ -2,8 +2,8 @@ import html
 import json
 import os
 import time
+import urllib.error
 import urllib.request
-from urllib.error import HTTPError, URLError
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -17,6 +17,9 @@ REST_URL = "https://api.github.com"
 
 WIB = ZoneInfo("Asia/Jakarta")
 
+REQUEST_TIMEOUT = 20
+MAX_RETRIES = 3
+
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
     "User-Agent": "github-profile-activity",
@@ -24,32 +27,33 @@ HEADERS = {
 }
 
 
-# ============================================================
-# API HELPERS
-# ============================================================
+def request_json(request):
+    last_error = None
 
-
-def request_json(request, attempts=3, timeout=20):
-    """Open a GitHub API request with a small retry policy."""
-
-    for attempt in range(1, attempts + 1):
+    for attempt in range(MAX_RETRIES):
         try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
+            with urllib.request.urlopen(
+                request,
+                timeout=REQUEST_TIMEOUT,
+            ) as response:
                 return json.loads(response.read())
 
-        except HTTPError as error:
-            retryable = error.code in {429, 500, 502, 503, 504}
+        except (
+            urllib.error.HTTPError,
+            urllib.error.URLError,
+            TimeoutError,
+        ) as exc:
+            last_error = exc
 
-            if not retryable or attempt == attempts:
-                raise
+            if attempt == MAX_RETRIES - 1:
+                break
 
-        except URLError:
-            if attempt == attempts:
-                raise
+            time.sleep(2 ** attempt)
 
-        time.sleep(2 ** (attempt - 1))
-
-    raise RuntimeError("GitHub API request failed after retries.")
+    raise RuntimeError(
+        f"GitHub API request failed after {MAX_RETRIES} attempts: "
+        f"{last_error}"
+    )
 
 
 def graphql(query, variables):
@@ -84,11 +88,6 @@ def rest(url):
     )
 
     return request_json(request)
-
-
-# ============================================================
-# CONTRIBUTION DATA
-# ============================================================
 
 
 def get_account_created_at():
@@ -164,11 +163,6 @@ def get_contributions():
     return all_days
 
 
-# ============================================================
-# STREAKS
-# ============================================================
-
-
 def calculate_streaks(days):
     ordered = sorted(days.items())
 
@@ -196,23 +190,29 @@ def calculate_streaks(days):
             running = 0
             running_start = None
 
-    # Current streak uses WIB so the date boundary matches the profile owner.
     today = datetime.now(WIB).date()
     pointer = today
 
-    # If there is no contribution yet today, yesterday can still be the
-    # latest day in an active streak.
     if days.get(pointer.isoformat(), 0) == 0:
         pointer -= timedelta(days=1)
 
-    current_end = pointer if days.get(pointer.isoformat(), 0) > 0 else None
+    current_end = (
+        pointer
+        if days.get(pointer.isoformat(), 0) > 0
+        else None
+    )
+
     current = 0
 
     while days.get(pointer.isoformat(), 0) > 0:
         current += 1
         pointer -= timedelta(days=1)
 
-    current_start = pointer + timedelta(days=1) if current > 0 else None
+    current_start = (
+        pointer + timedelta(days=1)
+        if current > 0
+        else None
+    )
 
     return (
         current,
@@ -251,14 +251,7 @@ def format_current_streak_period(start):
     return f"{format_date(start)} - PRESENT"
 
 
-# ============================================================
-# ACTIVITY TREND
-# ============================================================
-
-
 def calculate_activity_trend(days):
-    """Compare the latest 30 days with the preceding 30 days."""
-
     today = datetime.now(WIB).date()
 
     recent_start = today - timedelta(days=29)
@@ -280,11 +273,9 @@ def calculate_activity_trend(days):
         if recent_total > 0:
             return {
                 "change": None,
-                "symbol": "▲",
-                "color": "#3fb950",
-                "label": "NEW",
-                "recent": recent_total,
-                "previous": previous_total,
+                "symbol": "●",
+                "color": "#58a6ff",
+                "label": "NEW ACTIVITY",
             }
 
         return {
@@ -292,8 +283,6 @@ def calculate_activity_trend(days):
             "symbol": "-",
             "color": "#d29922",
             "label": "STABLE",
-            "recent": recent_total,
-            "previous": previous_total,
         }
 
     change = (
@@ -307,8 +296,6 @@ def calculate_activity_trend(days):
             "symbol": "▲",
             "color": "#3fb950",
             "label": "UP",
-            "recent": recent_total,
-            "previous": previous_total,
         }
 
     if change < -2:
@@ -317,8 +304,6 @@ def calculate_activity_trend(days):
             "symbol": "▼",
             "color": "#f85149",
             "label": "DOWN",
-            "recent": recent_total,
-            "previous": previous_total,
         }
 
     return {
@@ -326,24 +311,22 @@ def calculate_activity_trend(days):
         "symbol": "-",
         "color": "#d29922",
         "label": "STABLE",
-        "recent": recent_total,
-        "previous": previous_total,
     }
 
 
 def activity_status(days):
-    """Return a meaningful profile status based on the latest 7 days."""
-
     today = datetime.now(WIB).date()
     start = today - timedelta(days=6)
 
-    contributions = sum(
+    recent = sum(
         count
         for date_string, count in days.items()
-        if start <= datetime.fromisoformat(date_string).date() <= today
+        if start
+        <= datetime.fromisoformat(date_string).date()
+        <= today
     )
 
-    if contributions > 0:
+    if recent > 0:
         return {
             "label": "ACTIVE",
             "color": "#3fb950",
@@ -351,13 +334,8 @@ def activity_status(days):
 
     return {
         "label": "IDLE",
-        "color": "#6e7681",
+        "color": "#8b949e",
     }
-
-
-# ============================================================
-# LANGUAGE DATA
-# ============================================================
 
 
 def get_repositories():
@@ -391,7 +369,6 @@ def get_languages():
     totals = defaultdict(int)
 
     for repo in repositories:
-        # Ignore forks so the card reflects the owner's own projects.
         if repo.get("fork"):
             continue
 
@@ -405,7 +382,6 @@ def get_languages():
     if total_size == 0:
         return []
 
-    # Top 3 keeps the right side clean and avoids footer collisions.
     top = sorted(
         totals.items(),
         key=lambda item: item[1],
@@ -421,11 +397,6 @@ def get_languages():
     ]
 
 
-# ============================================================
-# MONTHLY CHART
-# ============================================================
-
-
 def monthly_activity(days):
     now = datetime.now(WIB)
 
@@ -437,6 +408,7 @@ def monthly_activity(days):
         months.append((year, month))
 
         month -= 1
+
         if month == 0:
             month = 12
             year -= 1
@@ -463,12 +435,13 @@ def monthly_activity(days):
 
 
 def chart_coordinates(values):
-    x_start = 45
-    x_end = 650
-    y_top = 170
+    x_start = 48
+    x_end = 772
+    y_top = 175
     y_bottom = 315
 
     maximum = max(values) if values else 1
+
     if maximum == 0:
         maximum = 1
 
@@ -498,7 +471,7 @@ def chart_points(values):
     )
 
 
-def chart_circles(values, color):
+def chart_circles(values):
     circles = []
 
     for x, y in chart_coordinates(values):
@@ -509,7 +482,7 @@ def chart_circles(values, color):
     cy="{y:.1f}"
     r="4"
     fill="#0d1117"
-    stroke="{color}"
+    stroke="#58a6ff"
     stroke-width="2"
   />"""
         )
@@ -527,7 +500,8 @@ def chart_area(values):
     last_x = coordinates[-1][0]
 
     path = [
-        f"M{coordinates[0][0]:.1f} {coordinates[0][1]:.1f}"
+        f"M{coordinates[0][0]:.1f} "
+        f"{coordinates[0][1]:.1f}"
     ]
 
     for x, y in coordinates[1:]:
@@ -541,18 +515,19 @@ def chart_area(values):
 
 
 def month_label(year, month):
-    date_value = datetime(year, month, 1)
-    return date_value.strftime("%b %Y").upper()
-
-
-# ============================================================
-# LANGUAGE SVG
-# ============================================================
+    return datetime(
+        year,
+        month,
+        1,
+    ).strftime("%b %Y").upper()
 
 
 def language_svg(languages):
     rows = []
-    y = 312
+
+    y = 555
+    bar_x = 245
+    bar_width = 430
 
     colors = [
         "#58a6ff",
@@ -560,65 +535,40 @@ def language_svg(languages):
         "#a371f7",
     ]
 
-    # Extra room for names such as "Jupyter Notebook".
-    bar_x = 900
-    bar_width = 185
-
     for index, (name, percentage) in enumerate(languages):
         safe_name = html.escape(name)
         width = (percentage / 100) * bar_width
 
         rows.append(
             f"""
-  <text
-    x="755"
-    y="{y}"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="48" y="{y}"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="13">
     {safe_name}
   </text>
 
-  <rect
-    x="{bar_x}"
-    y="{y - 9}"
-    width="{bar_width}"
-    height="6"
-    rx="3"
-    fill="#21262d"
-  />
+  <rect x="{bar_x}" y="{y - 9}"
+        width="{bar_width}" height="7"
+        rx="3.5" fill="#21262d"/>
 
-  <rect
-    x="{bar_x}"
-    y="{y - 9}"
-    width="{width:.1f}"
-    height="6"
-    rx="3"
-    fill="{colors[index]}"
-  />
+  <rect x="{bar_x}" y="{y - 9}"
+        width="{width:.1f}" height="7"
+        rx="3.5" fill="{colors[index]}"/>
 
-  <text
-    x="1145"
-    y="{y}"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="772" y="{y}"
+        text-anchor="end"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="12">
     {percentage:.1f}%
   </text>
 """
         )
 
-        y += 27
+        y += 31
 
     return "".join(rows)
-
-
-# ============================================================
-# SVG GENERATOR
-# ============================================================
 
 
 def generate_svg(
@@ -635,9 +585,8 @@ def generate_svg(
     trend,
     status,
 ):
-    chart_color = "#58a6ff"
     points = chart_points(monthly_values)
-    circles = chart_circles(monthly_values, chart_color)
+    circles = chart_circles(monthly_values)
     area_path = chart_area(monthly_values)
 
     current_period = format_current_streak_period(current_start)
@@ -647,19 +596,17 @@ def generate_svg(
     )
 
     first_label = month_label(*months[0])
-    middle_label = month_label(*months[len(months) // 2])
+    middle_label = month_label(
+        *months[len(months) // 2]
+    )
     last_label = month_label(*months[-1])
 
     if trend["change"] is None:
-        trend_text = (
-            f"{trend['symbol']} NEW ACTIVITY "
-            f"VS PREVIOUS 30 DAYS"
-        )
+        trend_text = "● NEW ACTIVITY VS PREVIOUS 30 DAYS"
     else:
-        change = abs(trend["change"])
         trend_text = (
             f"{trend['symbol']} "
-            f"{change:.1f}% "
+            f"{abs(trend['change']):.1f}% "
             f"VS PREVIOUS 30 DAYS"
         )
 
@@ -673,380 +620,219 @@ def generate_svg(
         streak_animation = """
     <animate
       attributeName="r"
-      values="50;61;50"
-      dur="2.5s"
+      values="49;57;49"
+      dur="2.6s"
       repeatCount="indefinite"
     />
-
     <animate
       attributeName="opacity"
-      values="0.30;0.03;0.30"
-      dur="2.5s"
+      values="0.28;0.03;0.28"
+      dur="2.6s"
       repeatCount="indefinite"
     />"""
     else:
         streak_animation = ""
 
+    return f"""<svg xmlns="http://www.w3.org/2000/svg"
+  width="820" height="650"
+  viewBox="0 0 820 650">
 
-    return f"""<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="1200"
-  height="430"
-  viewBox="0 0 1200 430"
->
+  <rect width="820" height="650"
+        rx="16" fill="#0d1117"/>
 
-  <title>GitHub development activity for {html.escape(USERNAME)}</title>
+  <rect x="1" y="1"
+        width="818" height="648"
+        rx="15" fill="none"
+        stroke="#30363d"
+        stroke-width="2"/>
 
-  <!-- Background -->
-  <rect
-    width="1200"
-    height="430"
-    rx="14"
-    fill="#0d1117"
-  />
-
-  <rect
-    x="1"
-    y="1"
-    width="1198"
-    height="428"
-    rx="13"
-    fill="none"
-    stroke="#30363d"
-    stroke-width="2"
-  />
-
-
-  <!-- Status -->
-  <text
-    x="34"
-    y="42"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-    letter-spacing="1.5"
-  >
-    MAULIDACY / DEVELOPMENT SNAPSHOT
+  <text x="34" y="38"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.1">
+    MAULIDACY / GITHUB SNAPSHOT
   </text>
 
-  <circle
-    cx="1094"
-    cy="37"
-    r="5"
-    fill="{status['color']}"
-  >
-    <animate
-      attributeName="opacity"
-      values="1;0.25;1"
+  <circle cx="728" cy="34" r="4.5"
+          fill="{status['color']}">
+    <animate attributeName="opacity"
+      values="1;0.3;1"
       dur="2s"
-      repeatCount="indefinite"
-    />
+      repeatCount="indefinite"/>
   </circle>
 
-  <text
-    x="1108"
-    y="42"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="742" y="38"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11">
     {status['label']}
   </text>
 
-  <line
-    x1="34"
-    y1="65"
-    x2="1166"
-    y2="65"
-    stroke="#30363d"
-  />
+  <line x1="34" y1="58"
+        x2="786" y2="58"
+        stroke="#30363d"/>
 
-
-  <!-- Contributions -->
-  <text
-    x="34"
-    y="101"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="12"
-    letter-spacing="1.7"
-  >
+  <text x="48" y="91"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="12"
+        letter-spacing="1.5">
     CONTRIBUTIONS
   </text>
 
-  <text
-    x="34"
-    y="151"
-    fill="#f0f6fc"
-    font-family="Arial, sans-serif"
-    font-size="36"
-    font-weight="700"
-  >
+  <text x="48" y="132"
+        fill="#f0f6fc"
+        font-family="Arial, sans-serif"
+        font-size="34"
+        font-weight="700">
     {total:,}
   </text>
 
-  <text
-    x="165"
-    y="151"
-    fill="#8b949e"
-    font-family="Arial, sans-serif"
-    font-size="15"
-  >
-    total contributions
+  <text x="166" y="132"
+        fill="#8b949e"
+        font-family="Arial, sans-serif"
+        font-size="14">
+    total
   </text>
 
-  <text
-    x="34"
-    y="176"
-    fill="{trend['color']}"
-    font-family="monospace"
-    font-size="11"
-  >
+  <text x="786" y="126"
+        text-anchor="end"
+        fill="{trend['color']}"
+        font-family="monospace"
+        font-size="11">
     {trend_text}
   </text>
 
-
-  <!-- Chart -->
-  <g
-    stroke="#21262d"
-    stroke-width="1"
-  >
-    <line x1="34" y1="205" x2="675" y2="205"/>
-    <line x1="34" y1="243" x2="675" y2="243"/>
-    <line x1="34" y1="281" x2="675" y2="281"/>
-    <line x1="34" y1="319" x2="675" y2="319"/>
+  <g stroke="#21262d" stroke-width="1">
+    <line x1="48" y1="180" x2="772" y2="180"/>
+    <line x1="48" y1="225" x2="772" y2="225"/>
+    <line x1="48" y1="270" x2="772" y2="270"/>
+    <line x1="48" y1="315" x2="772" y2="315"/>
   </g>
 
-  <path
-    d="{area_path}"
-    fill="{chart_color}"
-    opacity="0.07"
-  />
+  <path d="{area_path}"
+        fill="#58a6ff"
+        opacity="0.07"/>
 
-  <polyline
-    points="{points}"
-    fill="none"
-    stroke="{chart_color}"
-    stroke-width="3"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+  <polyline points="{points}"
+        fill="none"
+        stroke="#58a6ff"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
   {circles}
 
-  <text
-    x="34"
-    y="344"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
+  <text x="48" y="339"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="10">
     {first_label}
   </text>
 
-  <text
-    x="350"
-    y="344"
-    text-anchor="middle"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
+  <text x="410" y="339"
+        text-anchor="middle"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="10">
     {middle_label}
   </text>
 
-  <text
-    x="650"
-    y="344"
-    text-anchor="end"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
+  <text x="772" y="339"
+        text-anchor="end"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="10">
     {last_label}
   </text>
 
+  <line x1="34" y1="366"
+        x2="786" y2="366"
+        stroke="#30363d"/>
 
-  <!-- Divider -->
-  <line
-    x1="710"
-    y1="92"
-    x2="710"
-    y2="365"
-    stroke="#30363d"
-  />
-
-
-  <!-- Current streak -->
-  <text
-    x="755"
-    y="101"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="12"
-    letter-spacing="1.7"
-  >
+  <text x="48" y="398"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.3">
     CURRENT STREAK
   </text>
 
-  <circle
-    cx="830"
-    cy="176"
-    r="51"
-    fill="none"
-    stroke="{streak_color}"
-    stroke-width="2"
-    opacity="0.25"
-  >
+  <circle cx="116" cy="452"
+        r="50"
+        fill="none"
+        stroke="{streak_color}"
+        stroke-width="2"
+        opacity="0.25">
     {streak_animation}
   </circle>
 
-  <circle
-    cx="830"
-    cy="176"
-    r="47"
-    fill="#11161d"
-    stroke="{streak_color}"
-    stroke-width="3"
-  />
+  <circle cx="116" cy="452"
+        r="46"
+        fill="#11161d"
+        stroke="{streak_color}"
+        stroke-width="3"/>
 
-  <text
-    x="830"
-    y="185"
-    text-anchor="middle"
-    fill="{streak_color}"
-    font-family="Arial, sans-serif"
-    font-size="31"
-    font-weight="700"
-  >
+  <text x="116" y="461"
+        text-anchor="middle"
+        fill="{streak_color}"
+        font-family="Arial, sans-serif"
+        font-size="29"
+        font-weight="700">
     {current_streak}
   </text>
 
-  <text
-    x="830"
-    y="210"
-    text-anchor="middle"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10"
-    letter-spacing="1"
-  >
+  <text x="116" y="483"
+        text-anchor="middle"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="9">
     DAYS
   </text>
 
-  <text
-    x="830"
-    y="239"
-    text-anchor="middle"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="9"
-  >
+  <text x="48" y="521"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="10">
     {current_period}
   </text>
 
-
-  <!-- Longest streak -->
-  <text
-    x="930"
-    y="146"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10"
-    letter-spacing="1.4"
-  >
+  <text x="245" y="398"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.3">
     LONGEST STREAK
   </text>
 
-  <text
-    x="930"
-    y="176"
-    fill="#f0f6fc"
-    font-family="Arial, sans-serif"
-    font-size="24"
-    font-weight="600"
-  >
+  <text x="245" y="446"
+        fill="#f0f6fc"
+        font-family="Arial, sans-serif"
+        font-size="28"
+        font-weight="700">
     {longest_streak} days
   </text>
 
-  <text
-    x="930"
-    y="202"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
+  <text x="245" y="475"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="10">
     {longest_period}
   </text>
 
-
-  <!-- Languages -->
-  <line
-    x1="755"
-    y1="260"
-    x2="1155"
-    y2="260"
-    stroke="#30363d"
-  />
-
-  <text
-    x="755"
-    y="288"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="12"
-    letter-spacing="1.7"
-  >
+  <text x="48" y="548"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="11"
+        letter-spacing="1.3">
     MOST USED LANGUAGES
   </text>
 
   {language_svg(languages)}
 
-
-  <!-- Footer -->
-  <line
-    x1="34"
-    y1="388"
-    x2="1166"
-    y2="388"
-    stroke="#30363d"
-  />
-
-  <circle
-    cx="40"
-    cy="410"
-    r="3"
-    fill="{status['color']}"
-  />
-
-  <text
-    x="52"
-    y="414"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
-    GITHUB DATA
-  </text>
-
-  <text
-    x="1166"
-    y="414"
-    text-anchor="end"
-    fill="#6e7681"
-    font-family="monospace"
-    font-size="10"
-  >
-    AUTO UPDATED · GITHUB ACTIONS
-  </text>
-
 </svg>
 """
-
-
-# ============================================================
-# MAIN
-# ============================================================
 
 
 def main():
@@ -1087,10 +873,7 @@ def main():
         status=status,
     )
 
-    os.makedirs(
-        "assets",
-        exist_ok=True,
-    )
+    os.makedirs("assets", exist_ok=True)
 
     output_path = "assets/github-terminal.svg"
 
@@ -1101,32 +884,7 @@ def main():
     ) as file:
         file.write(svg)
 
-    print()
-    print("GitHub activity SVG generated successfully.")
-    print("-------------------------------------------")
-    print("Output:", output_path)
-    print("Total contributions:", total)
-    print("Current streak:", current_streak)
-    print(
-        "Current period:",
-        format_current_streak_period(current_start),
-    )
-    print("Longest streak:", longest_streak)
-    print(
-        "Longest period:",
-        format_streak_period(
-            longest_start,
-            longest_end,
-        ),
-    )
-    if trend["change"] is None:
-        trend_log = f"{trend['symbol']} NEW ACTIVITY"
-    else:
-        trend_log = f"{trend['symbol']} {trend['change']:.1f}%"
-
-    print("30-day trend:", trend_log)
-    print("Status:", status["label"])
-    print("Languages:", languages)
+    print("GitHub activity SVG generated:", output_path)
 
 
 if __name__ == "__main__":
