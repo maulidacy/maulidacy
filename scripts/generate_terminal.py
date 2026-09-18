@@ -8,7 +8,6 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-
 USERNAME = os.getenv("GITHUB_USERNAME", "maulidacy")
 TOKEN = os.environ["GITHUB_TOKEN"]
 
@@ -26,6 +25,10 @@ HEADERS = {
     "Accept": "application/vnd.github+json",
 }
 
+
+# ============================================================
+# HTTP / API
+# ============================================================
 
 def request_json(request):
     last_error = None
@@ -51,8 +54,7 @@ def request_json(request):
             time.sleep(2 ** attempt)
 
     raise RuntimeError(
-        f"GitHub API request failed after {MAX_RETRIES} attempts: "
-        f"{last_error}"
+        f"GitHub API request failed after {MAX_RETRIES} attempts: {last_error}"
     )
 
 
@@ -86,9 +88,12 @@ def rest(url):
         url,
         headers=HEADERS,
     )
-
     return request_json(request)
 
+
+# ============================================================
+# CONTRIBUTIONS
+# ============================================================
 
 def get_account_created_at():
     query = """
@@ -99,10 +104,7 @@ def get_account_created_at():
     }
     """
 
-    data = graphql(
-        query,
-        {"login": USERNAME},
-    )
+    data = graphql(query, {"login": USERNAME})
 
     return datetime.fromisoformat(
         data["user"]["createdAt"].replace("Z", "+00:00")
@@ -150,8 +152,7 @@ def get_contributions():
 
         weeks = (
             data["user"]["contributionsCollection"]
-            ["contributionCalendar"]
-            ["weeks"]
+            ["contributionCalendar"]["weeks"]
         )
 
         for week in weeks:
@@ -162,6 +163,10 @@ def get_contributions():
 
     return all_days
 
+
+# ============================================================
+# STREAKS
+# ============================================================
 
 def calculate_streaks(days):
     ordered = sorted(days.items())
@@ -193,6 +198,7 @@ def calculate_streaks(days):
     today = datetime.now(WIB).date()
     pointer = today
 
+    # Jika hari ini belum ada contribution, streak kemarin masih boleh aktif.
     if days.get(pointer.isoformat(), 0) == 0:
         pointer -= timedelta(days=1)
 
@@ -231,7 +237,7 @@ def format_date(date_value):
     return f"{date_value.strftime('%b')} {date_value.day}"
 
 
-def format_streak_period(start, end):
+def format_period(start, end):
     if start is None or end is None:
         return "-"
 
@@ -244,14 +250,27 @@ def format_streak_period(start, end):
     )
 
 
-def format_current_streak_period(start):
+def format_current_period(start):
     if start is None:
         return "NO ACTIVE STREAK"
 
     return f"{format_date(start)} - PRESENT"
 
 
+# ============================================================
+# TREND
+# ============================================================
+
 def calculate_activity_trend(days):
+    """
+    Bandingkan 30 hari terakhir dengan 30 hari sebelumnya.
+
+    UP     -> hijau
+    DOWN   -> merah
+    STABLE -> amber
+    NEW    -> biru
+    """
+
     today = datetime.now(WIB).date()
 
     recent_start = today - timedelta(days=29)
@@ -321,9 +340,7 @@ def activity_status(days):
     recent = sum(
         count
         for date_string, count in days.items()
-        if start
-        <= datetime.fromisoformat(date_string).date()
-        <= today
+        if start <= datetime.fromisoformat(date_string).date() <= today
     )
 
     if recent > 0:
@@ -338,6 +355,10 @@ def activity_status(days):
     }
 
 
+# ============================================================
+# LANGUAGES
+# ============================================================
+
 def get_repositories():
     repositories = []
     page = 1
@@ -345,10 +366,7 @@ def get_repositories():
     while True:
         batch = rest(
             f"{REST_URL}/users/{USERNAME}/repos"
-            f"?per_page=100"
-            f"&page={page}"
-            f"&type=owner"
-            f"&sort=updated"
+            f"?per_page=100&page={page}&type=owner&sort=updated"
         )
 
         if not batch:
@@ -397,6 +415,10 @@ def get_languages():
     ]
 
 
+# ============================================================
+# MONTHLY CHART
+# ============================================================
+
 def monthly_activity(days):
     now = datetime.now(WIB)
 
@@ -435,10 +457,10 @@ def monthly_activity(days):
 
 
 def chart_coordinates(values):
-    x_start = 48
-    x_end = 772
-    y_top = 175
-    y_bottom = 315
+    x_start = 42
+    x_end = 678
+    y_top = 145
+    y_bottom = 285
 
     maximum = max(values) if values else 1
 
@@ -471,7 +493,7 @@ def chart_points(values):
     )
 
 
-def chart_circles(values):
+def chart_circles(values, color):
     circles = []
 
     for x, y in chart_coordinates(values):
@@ -482,7 +504,7 @@ def chart_circles(values):
     cy="{y:.1f}"
     r="4"
     fill="#0d1117"
-    stroke="#58a6ff"
+    stroke="{color}"
     stroke-width="2"
   />"""
         )
@@ -507,8 +529,8 @@ def chart_area(values):
     for x, y in coordinates[1:]:
         path.append(f"L{x:.1f} {y:.1f}")
 
-    path.append(f"L{last_x:.1f} 315")
-    path.append(f"L{first_x:.1f} 315")
+    path.append(f"L{last_x:.1f} 285")
+    path.append(f"L{first_x:.1f} 285")
     path.append("Z")
 
     return " ".join(path)
@@ -522,12 +544,16 @@ def month_label(year, month):
     ).strftime("%b %Y").upper()
 
 
+# ============================================================
+# LANGUAGE SVG
+# ============================================================
+
 def language_svg(languages):
     rows = []
 
-    y = 555
-    bar_x = 245
-    bar_width = 430
+    y = 401
+    bar_x = 486
+    bar_width = 150
 
     colors = [
         "#58a6ff",
@@ -541,41 +567,60 @@ def language_svg(languages):
 
         rows.append(
             f"""
-  <text x="48" y="{y}"
-        fill="#c9d1d9"
-        font-family="monospace"
-        font-size="13">
+  <text
+    x="374"
+    y="{y}"
+    fill="#c9d1d9"
+    font-family="monospace"
+    font-size="12"
+  >
     {safe_name}
   </text>
 
-  <rect x="{bar_x}" y="{y - 9}"
-        width="{bar_width}" height="7"
-        rx="3.5" fill="#21262d"/>
+  <rect
+    x="{bar_x}"
+    y="{y - 9}"
+    width="{bar_width}"
+    height="7"
+    rx="3.5"
+    fill="#21262d"
+  />
 
-  <rect x="{bar_x}" y="{y - 9}"
-        width="{width:.1f}" height="7"
-        rx="3.5" fill="{colors[index]}"/>
+  <rect
+    x="{bar_x}"
+    y="{y - 9}"
+    width="{width:.1f}"
+    height="7"
+    rx="3.5"
+    fill="{colors[index]}"
+  />
 
-  <text x="772" y="{y}"
-        text-anchor="end"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="12">
+  <text
+    x="676"
+    y="{y}"
+    text-anchor="end"
+    fill="#8b949e"
+    font-family="monospace"
+    font-size="10.5"
+  >
     {percentage:.1f}%
   </text>
 """
         )
 
-        y += 31
+        y += 36
 
     return "".join(rows)
 
+
+# ============================================================
+# SVG GENERATOR
+# ============================================================
 
 def generate_svg(
     total,
     current_streak,
     current_start,
-    current_end,
     longest_streak,
     longest_start,
     longest_end,
@@ -585,12 +630,20 @@ def generate_svg(
     trend,
     status,
 ):
+    chart_color = trend["color"]
+
     points = chart_points(monthly_values)
-    circles = chart_circles(monthly_values)
+    circles = chart_circles(
+        monthly_values,
+        chart_color,
+    )
     area_path = chart_area(monthly_values)
 
-    current_period = format_current_streak_period(current_start)
-    longest_period = format_streak_period(
+    current_period = format_current_period(
+        current_start
+    )
+
+    longest_period = format_period(
         longest_start,
         longest_end,
     )
@@ -602,7 +655,7 @@ def generate_svg(
     last_label = month_label(*months[-1])
 
     if trend["change"] is None:
-        trend_text = "● NEW ACTIVITY VS PREVIOUS 30 DAYS"
+        trend_text = "● NEW ACTIVITY"
     else:
         trend_text = (
             f"{trend['symbol']} "
@@ -620,220 +673,273 @@ def generate_svg(
         streak_animation = """
     <animate
       attributeName="r"
-      values="49;57;49"
-      dur="2.6s"
+      values="43;49;43"
+      dur="2.5s"
       repeatCount="indefinite"
     />
     <animate
       attributeName="opacity"
-      values="0.28;0.03;0.28"
-      dur="2.6s"
+      values="0.28;0.04;0.28"
+      dur="2.5s"
       repeatCount="indefinite"
     />"""
     else:
         streak_animation = ""
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg"
-  width="820" height="650"
-  viewBox="0 0 820 650">
+     width="720"
+     height="520"
+     viewBox="0 0 720 520">
 
-  <rect width="820" height="650"
-        rx="16" fill="#0d1117"/>
+  <!-- Background -->
+  <rect width="720" height="520" rx="14" fill="#0d1117"/>
 
   <rect x="1" y="1"
-        width="818" height="648"
-        rx="15" fill="none"
+        width="718" height="518"
+        rx="13"
+        fill="none"
         stroke="#30363d"
         stroke-width="2"/>
 
-  <text x="34" y="38"
+  <!-- Header -->
+  <text x="28" y="34"
         fill="#8b949e"
         font-family="monospace"
         font-size="11"
-        letter-spacing="1.1">
+        letter-spacing="1.2">
     MAULIDACY / GITHUB SNAPSHOT
   </text>
 
-  <circle cx="728" cy="34" r="4.5"
+  <circle cx="640" cy="30"
+          r="4.5"
           fill="{status['color']}">
-    <animate attributeName="opacity"
+    <animate
+      attributeName="opacity"
       values="1;0.3;1"
       dur="2s"
       repeatCount="indefinite"/>
   </circle>
 
-  <text x="742" y="38"
+  <text x="653" y="34"
         fill="#8b949e"
         font-family="monospace"
         font-size="11">
     {status['label']}
   </text>
 
-  <line x1="34" y1="58"
-        x2="786" y2="58"
+  <line x1="28" y1="50"
+        x2="692" y2="50"
         stroke="#30363d"/>
 
-  <text x="48" y="91"
+  <!-- ================================================= -->
+  <!-- ROW 1 : CONTRIBUTIONS -->
+  <!-- ================================================= -->
+
+  <text x="34" y="78"
         fill="#8b949e"
         font-family="monospace"
-        font-size="12"
+        font-size="11"
         letter-spacing="1.5">
     CONTRIBUTIONS
   </text>
 
-  <text x="48" y="132"
+  <text x="34" y="114"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
-        font-size="34"
+        font-size="31"
         font-weight="700">
     {total:,}
   </text>
 
-  <text x="166" y="132"
+  <text x="140" y="114"
         fill="#8b949e"
         font-family="Arial, sans-serif"
         font-size="14">
-    total
+    total contributions
   </text>
 
-  <text x="786" y="126"
+  <text x="686" y="109"
         text-anchor="end"
         fill="{trend['color']}"
         font-family="monospace"
-        font-size="11">
+        font-size="10.5">
     {trend_text}
   </text>
 
+  <!-- Chart grid -->
   <g stroke="#21262d" stroke-width="1">
-    <line x1="48" y1="180" x2="772" y2="180"/>
-    <line x1="48" y1="225" x2="772" y2="225"/>
-    <line x1="48" y1="270" x2="772" y2="270"/>
-    <line x1="48" y1="315" x2="772" y2="315"/>
+    <line x1="34" y1="155" x2="686" y2="155"/>
+    <line x1="34" y1="198" x2="686" y2="198"/>
+    <line x1="34" y1="241" x2="686" y2="241"/>
+    <line x1="34" y1="285" x2="686" y2="285"/>
   </g>
 
   <path d="{area_path}"
-        fill="#58a6ff"
+        fill="{chart_color}"
         opacity="0.07"/>
 
   <polyline points="{points}"
         fill="none"
-        stroke="#58a6ff"
+        stroke="{chart_color}"
         stroke-width="3"
         stroke-linecap="round"
         stroke-linejoin="round"/>
 
   {circles}
 
-  <text x="48" y="339"
+  <text x="34" y="304"
         fill="#6e7681"
         font-family="monospace"
-        font-size="10">
+        font-size="9.5">
     {first_label}
   </text>
 
-  <text x="410" y="339"
+  <text x="360" y="304"
         text-anchor="middle"
         fill="#6e7681"
         font-family="monospace"
-        font-size="10">
+        font-size="9.5">
     {middle_label}
   </text>
 
-  <text x="772" y="339"
+  <text x="686" y="304"
         text-anchor="end"
         fill="#6e7681"
         font-family="monospace"
-        font-size="10">
+        font-size="9.5">
     {last_label}
   </text>
 
-  <line x1="34" y1="366"
-        x2="786" y2="366"
+  <line x1="28" y1="324"
+        x2="692" y2="324"
         stroke="#30363d"/>
 
-  <text x="48" y="398"
+  <!-- ================================================= -->
+  <!-- ROW 2 LEFT : STREAKS -->
+  <!-- ================================================= -->
+
+  <text x="34" y="351"
         fill="#8b949e"
         font-family="monospace"
         font-size="11"
-        letter-spacing="1.3">
-    CURRENT STREAK
+        letter-spacing="1.4">
+    STREAKS
   </text>
 
-  <circle cx="116" cy="452"
-        r="50"
-        fill="none"
-        stroke="{streak_color}"
-        stroke-width="2"
-        opacity="0.25">
+  <circle cx="92" cy="411"
+          r="44"
+          fill="none"
+          stroke="{streak_color}"
+          stroke-width="2"
+          opacity="0.22">
     {streak_animation}
   </circle>
 
-  <circle cx="116" cy="452"
-        r="46"
-        fill="#11161d"
-        stroke="{streak_color}"
-        stroke-width="3"/>
+  <circle cx="92" cy="411"
+          r="39"
+          fill="#11161d"
+          stroke="{streak_color}"
+          stroke-width="3"/>
 
-  <text x="116" y="461"
+  <text x="92" y="420"
         text-anchor="middle"
         fill="{streak_color}"
         font-family="Arial, sans-serif"
-        font-size="29"
+        font-size="27"
         font-weight="700">
     {current_streak}
   </text>
 
-  <text x="116" y="483"
+  <text x="92" y="440"
         text-anchor="middle"
         fill="#8b949e"
         font-family="monospace"
-        font-size="9">
+        font-size="8.5">
     DAYS
   </text>
 
-  <text x="48" y="521"
-        fill="#6e7681"
+  <text x="154" y="385"
+        fill="#8b949e"
         font-family="monospace"
         font-size="10">
+    CURRENT
+  </text>
+
+  <text x="154" y="410"
+        fill="#f0f6fc"
+        font-family="Arial, sans-serif"
+        font-size="19"
+        font-weight="700">
+    {current_streak} days
+  </text>
+
+  <text x="154" y="430"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9.5">
     {current_period}
   </text>
 
-  <text x="245" y="398"
+  <text x="154" y="460"
         fill="#8b949e"
         font-family="monospace"
-        font-size="11"
-        letter-spacing="1.3">
-    LONGEST STREAK
+        font-size="10">
+    LONGEST
   </text>
 
-  <text x="245" y="446"
+  <text x="154" y="485"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
-        font-size="28"
+        font-size="19"
         font-weight="700">
     {longest_streak} days
   </text>
 
-  <text x="245" y="475"
+  <text x="246" y="485"
         fill="#6e7681"
         font-family="monospace"
-        font-size="10">
+        font-size="9.5">
     {longest_period}
   </text>
 
-  <text x="48" y="548"
+  <!-- Vertical divider -->
+  <line x1="340" y1="348"
+        x2="340" y2="492"
+        stroke="#30363d"/>
+
+  <!-- ================================================= -->
+  <!-- ROW 2 RIGHT : LANGUAGES -->
+  <!-- ================================================= -->
+
+  <text x="374" y="351"
         fill="#8b949e"
         font-family="monospace"
         font-size="11"
-        letter-spacing="1.3">
+        letter-spacing="1.4">
     MOST USED LANGUAGES
   </text>
 
   {language_svg(languages)}
 
+  <!-- Footer -->
+  <line x1="28" y1="500"
+        x2="692" y2="500"
+        stroke="#30363d"/>
+
+  <text x="34" y="515"
+        fill="#6e7681"
+        font-family="monospace"
+        font-size="9">
+    AUTO UPDATED
+  </text>
+
 </svg>
 """
 
+
+# ============================================================
+# MAIN
+# ============================================================
 
 def main():
     print("Fetching GitHub contributions...")
@@ -844,7 +950,7 @@ def main():
     (
         current_streak,
         current_start,
-        current_end,
+        _current_end,
         longest_streak,
         longest_start,
         longest_end,
@@ -862,7 +968,6 @@ def main():
         total=total,
         current_streak=current_streak,
         current_start=current_start,
-        current_end=current_end,
         longest_streak=longest_streak,
         longest_start=longest_start,
         longest_end=longest_end,
@@ -884,7 +989,13 @@ def main():
     ) as file:
         file.write(svg)
 
-    print("GitHub activity SVG generated:", output_path)
+    print()
+    print("Generated:", output_path)
+    print("Total contributions:", total)
+    print("Current streak:", current_streak)
+    print("Longest streak:", longest_streak)
+    print("Trend:", trend["label"], trend["change"])
+    print("Languages:", languages)
 
 
 if __name__ == "__main__":
