@@ -1,98 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="1200"
+     width="720"
      height="980"
-     viewBox="0 0 1200 980">
+     viewBox="0 0 720 980">
 
   <!-- Background -->
-  <rect width="1200" height="980" rx="18" fill="#0d1117"/>
-  <rect x="1" y="1" width="1198" height="978" rx="17"
+  <rect width="720" height="980" rx="16" fill="#0d1117"/>
+  <rect x="1" y="1" width="718" height="978" rx="15"
         fill="none" stroke="#30363d" stroke-width="2"/>
 
-  <!-- Header -->
-  <text x="36" y="56"
-        fill="#f0f6fc"
-        font-family="Arial, sans-serif"
-        font-size="28"
-        font-weight="700">
-    Tech Stack
-  </text>
-
-  <text x="1160" y="53"
-        text-anchor="end"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="12"
-        letter-spacing="1">
-    STACK OVERVIEW
-  </text>
-
-  <line x1="36" y1="82" x2="1164" y2="82"
-        stroke="#30363d" stroke-width="1.5"/>
+  <!-- Top accent -->
+  <line x1="28" y1="32" x2="692" y2="32"
+        stroke="#30363d" stroke-width="1.4"/>
 
   <!-- ================================================= -->
-  <!-- AI / ML & DATA -->
+  <!-- AI / ML & Data -->
   <!-- ================================================= -->
+  <rect x="28" y="58" width="7" height="122" rx="3.5" fill="#a371f7"/>
 
-  <rect x="36" y="112" width="1128" height="180" rx="14" fill="#0f1622" stroke="#21262d"/>
-  <rect x="36" y="112" width="8" height="180" rx="4" fill="#a371f7"/>
-
-  <text x="64" y="147"
+  <text x="52" y="88"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
         font-size="22"
         font-weight="700">
-    AI/ML &amp; Data
+    AI / ML &amp; Data
   </text>
 
-  <text x="64" y="174"
+  <text x="52" y="112"
         fill="#8b949e"
         font-family="Arial, sans-serif"
         font-size="13">
     Modeling, analysis, and machine learning tools I’ve used.
   </text>
 
-  <g font-family="monospace" font-size="14">
-    <rect x="64" y="196" width="142" height="40" rx="8" fill="#161b22"/>
-    <circle cx="84" cy="216" r="5" fill="#ff6f00"/>
-    <text x="100" y="221" fill="#c9d1d9">TensorFlow</text>
+  <g font-family="monospace" font-size="13.5">
+    <rect x="52" y="132" width="132" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="151" r="5" fill="#ff6f00"/>
+    <text x="86" y="156" fill="#c9d1d9">TensorFlow</text>
 
-    <rect x="220" y="196" width="102" height="40" rx="8" fill="#161b22"/>
-    <circle cx="240" cy="216" r="5" fill="#e11d48"/>
-    <text x="256" y="221" fill="#c9d1d9">Keras</text>
+    <rect x="196" y="132" width="92" height="38" rx="8" fill="#161b22"/>
+    <circle cx="214" cy="151" r="5" fill="#e11d48"/>
+    <text x="230" y="156" fill="#c9d1d9">Keras</text>
 
-    <rect x="336" y="196" width="122" height="40" rx="8" fill="#161b22"/>
-    <circle cx="356" cy="216" r="5" fill="#ee4c2c"/>
-    <text x="372" y="221" fill="#c9d1d9">PyTorch</text>
+    <rect x="300" y="132" width="112" height="38" rx="8" fill="#161b22"/>
+    <circle cx="318" cy="151" r="5" fill="#ee4c2c"/>
+    <text x="334" y="156" fill="#c9d1d9">PyTorch</text>
 
-    <rect x="472" y="196" width="158" height="40" rx="8" fill="#161b22"/>
-    <circle cx="492" cy="216" r="5" fill="#f7931e"/>
-    <text x="508" y="221" fill="#c9d1d9">scikit-learn</text>
+    <rect x="424" y="132" width="150" height="38" rx="8" fill="#161b22"/>
+    <circle cx="442" cy="151" r="5" fill="#f7931e"/>
+    <text x="458" y="156" fill="#c9d1d9">scikit-learn</text>
 
-    <rect x="644" y="196" width="112" height="40" rx="8" fill="#161b22"/>
-    <circle cx="664" cy="216" r="5" fill="#8b5cf6"/>
-    <text x="680" y="221" fill="#c9d1d9">Pandas</text>
+    <rect x="52" y="182" width="102" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="201" r="5" fill="#8b5cf6"/>
+    <text x="86" y="206" fill="#c9d1d9">Pandas</text>
 
-    <rect x="770" y="196" width="108" height="40" rx="8" fill="#161b22"/>
-    <circle cx="790" cy="216" r="5" fill="#4dabcf"/>
-    <text x="806" y="221" fill="#c9d1d9">NumPy</text>
+    <rect x="166" y="182" width="98" height="38" rx="8" fill="#161b22"/>
+    <circle cx="184" cy="201" r="5" fill="#4dabcf"/>
+    <text x="200" y="206" fill="#c9d1d9">NumPy</text>
 
-    <rect x="892" y="196" width="128" height="40" rx="8" fill="#161b22"/>
-    <circle cx="912" cy="216" r="5" fill="#58a6ff"/>
-    <text x="928" y="221" fill="#c9d1d9">Matplotlib</text>
+    <rect x="276" y="182" width="118" height="38" rx="8" fill="#161b22"/>
+    <circle cx="294" cy="201" r="5" fill="#58a6ff"/>
+    <text x="310" y="206" fill="#c9d1d9">Matplotlib</text>
 
-    <rect x="1034" y="196" width="98" height="40" rx="8" fill="#161b22"/>
-    <circle cx="1054" cy="216" r="5" fill="#f37626"/>
-    <text x="1070" y="221" fill="#c9d1d9">Jupyter</text>
+    <rect x="406" y="182" width="92" height="38" rx="8" fill="#161b22"/>
+    <circle cx="424" cy="201" r="5" fill="#f37626"/>
+    <text x="440" y="206" fill="#c9d1d9">Jupyter</text>
   </g>
 
-  <!-- ================================================= -->
-  <!-- WEB / MOBILE / GAME -->
-  <!-- ================================================= -->
+  <line x1="28" y1="248" x2="692" y2="248"
+        stroke="#21262d" stroke-width="1.2"/>
 
-  <rect x="36" y="320" width="1128" height="180" rx="14" fill="#0f1622" stroke="#21262d"/>
-  <rect x="36" y="320" width="8" height="180" rx="4" fill="#58a6ff"/>
+  <!-- ================================================= -->
+  <!-- Web, Mobile & Game -->
+  <!-- ================================================= -->
+  <rect x="28" y="274" width="7" height="122" rx="3.5" fill="#58a6ff"/>
 
-  <text x="64" y="355"
+  <text x="52" y="304"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
         font-size="22"
@@ -100,51 +82,52 @@
     Web, Mobile &amp; Game
   </text>
 
-  <text x="64" y="382"
+  <text x="52" y="328"
         fill="#8b949e"
         font-family="Arial, sans-serif"
         font-size="13">
     Frontend, mobile, and interactive technologies I’ve worked with.
   </text>
 
-  <g font-family="monospace" font-size="14">
-    <rect x="64" y="404" width="96" height="40" rx="8" fill="#161b22"/>
-    <circle cx="84" cy="424" r="5" fill="#61dafb"/>
-    <text x="100" y="429" fill="#c9d1d9">React</text>
+  <g font-family="monospace" font-size="13.5">
+    <rect x="52" y="348" width="88" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="367" r="5" fill="#61dafb"/>
+    <text x="86" y="372" fill="#c9d1d9">React</text>
 
-    <rect x="174" y="404" width="110" height="40" rx="8" fill="#161b22"/>
-    <circle cx="194" cy="424" r="5" fill="#f0f6fc"/>
-    <text x="210" y="429" fill="#c9d1d9">Next.js</text>
+    <rect x="152" y="348" width="102" height="38" rx="8" fill="#161b22"/>
+    <circle cx="170" cy="367" r="5" fill="#f0f6fc"/>
+    <text x="186" y="372" fill="#c9d1d9">Next.js</text>
 
-    <rect x="298" y="404" width="88" height="40" rx="8" fill="#161b22"/>
-    <circle cx="318" cy="424" r="5" fill="#646cff"/>
-    <text x="334" y="429" fill="#c9d1d9">Vite</text>
+    <rect x="266" y="348" width="80" height="38" rx="8" fill="#161b22"/>
+    <circle cx="284" cy="367" r="5" fill="#646cff"/>
+    <text x="300" y="372" fill="#c9d1d9">Vite</text>
 
-    <rect x="400" y="404" width="168" height="40" rx="8" fill="#161b22"/>
-    <circle cx="420" cy="424" r="5" fill="#06b6d4"/>
-    <text x="436" y="429" fill="#c9d1d9">Tailwind CSS</text>
+    <rect x="358" y="348" width="158" height="38" rx="8" fill="#161b22"/>
+    <circle cx="376" cy="367" r="5" fill="#06b6d4"/>
+    <text x="392" y="372" fill="#c9d1d9">Tailwind CSS</text>
 
-    <rect x="582" y="404" width="130" height="40" rx="8" fill="#161b22"/>
-    <circle cx="602" cy="424" r="5" fill="#7952b3"/>
-    <text x="618" y="429" fill="#c9d1d9">Bootstrap</text>
+    <rect x="52" y="398" width="122" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="417" r="5" fill="#7952b3"/>
+    <text x="86" y="422" fill="#c9d1d9">Bootstrap</text>
 
-    <rect x="726" y="404" width="110" height="40" rx="8" fill="#161b22"/>
-    <circle cx="746" cy="424" r="5" fill="#54c5f8"/>
-    <text x="762" y="429" fill="#c9d1d9">Flutter</text>
+    <rect x="186" y="398" width="102" height="38" rx="8" fill="#161b22"/>
+    <circle cx="204" cy="417" r="5" fill="#54c5f8"/>
+    <text x="220" y="422" fill="#c9d1d9">Flutter</text>
 
-    <rect x="850" y="404" width="96" height="40" rx="8" fill="#161b22"/>
-    <circle cx="870" cy="424" r="5" fill="#c9d1d9"/>
-    <text x="886" y="429" fill="#c9d1d9">Unity</text>
+    <rect x="300" y="398" width="88" height="38" rx="8" fill="#161b22"/>
+    <circle cx="318" cy="417" r="5" fill="#c9d1d9"/>
+    <text x="334" y="422" fill="#c9d1d9">Unity</text>
   </g>
 
-  <!-- ================================================= -->
-  <!-- BACKEND & DATABASE -->
-  <!-- ================================================= -->
+  <line x1="28" y1="464" x2="692" y2="464"
+        stroke="#21262d" stroke-width="1.2"/>
 
-  <rect x="36" y="528" width="1128" height="180" rx="14" fill="#0f1622" stroke="#21262d"/>
-  <rect x="36" y="528" width="8" height="180" rx="4" fill="#3fb950"/>
+  <!-- ================================================= -->
+  <!-- Backend & Database -->
+  <!-- ================================================= -->
+  <rect x="28" y="490" width="7" height="122" rx="3.5" fill="#3fb950"/>
 
-  <text x="64" y="563"
+  <text x="52" y="520"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
         font-size="22"
@@ -152,51 +135,52 @@
     Backend &amp; Database
   </text>
 
-  <text x="64" y="590"
+  <text x="52" y="544"
         fill="#8b949e"
         font-family="Arial, sans-serif"
         font-size="13">
     APIs, databases, and backend tools I’ve used in projects.
   </text>
 
-  <g font-family="monospace" font-size="14">
-    <rect x="64" y="612" width="104" height="40" rx="8" fill="#161b22"/>
-    <circle cx="84" cy="632" r="5" fill="#5fa04e"/>
-    <text x="100" y="637" fill="#c9d1d9">Node.js</text>
+  <g font-family="monospace" font-size="13.5">
+    <rect x="52" y="564" width="96" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="583" r="5" fill="#5fa04e"/>
+    <text x="86" y="588" fill="#c9d1d9">Node.js</text>
 
-    <rect x="182" y="612" width="106" height="40" rx="8" fill="#161b22"/>
-    <circle cx="202" cy="632" r="5" fill="#009688"/>
-    <text x="218" y="637" fill="#c9d1d9">FastAPI</text>
+    <rect x="160" y="564" width="98" height="38" rx="8" fill="#161b22"/>
+    <circle cx="178" cy="583" r="5" fill="#009688"/>
+    <text x="194" y="588" fill="#c9d1d9">FastAPI</text>
 
-    <rect x="302" y="612" width="142" height="40" rx="8" fill="#161b22"/>
-    <circle cx="322" cy="632" r="5" fill="#4169e1"/>
-    <text x="338" y="637" fill="#c9d1d9">PostgreSQL</text>
+    <rect x="270" y="564" width="134" height="38" rx="8" fill="#161b22"/>
+    <circle cx="288" cy="583" r="5" fill="#4169e1"/>
+    <text x="304" y="588" fill="#c9d1d9">PostgreSQL</text>
 
-    <rect x="458" y="612" width="102" height="40" rx="8" fill="#161b22"/>
-    <circle cx="478" cy="632" r="5" fill="#4479a1"/>
-    <text x="494" y="637" fill="#c9d1d9">MySQL</text>
+    <rect x="416" y="564" width="96" height="38" rx="8" fill="#161b22"/>
+    <circle cx="434" cy="583" r="5" fill="#4479a1"/>
+    <text x="450" y="588" fill="#c9d1d9">MySQL</text>
 
-    <rect x="574" y="612" width="126" height="40" rx="8" fill="#161b22"/>
-    <circle cx="594" cy="632" r="5" fill="#3fcf8e"/>
-    <text x="610" y="637" fill="#c9d1d9">Supabase</text>
+    <rect x="524" y="564" width="118" height="38" rx="8" fill="#161b22"/>
+    <circle cx="542" cy="583" r="5" fill="#3fcf8e"/>
+    <text x="558" y="588" fill="#c9d1d9">Supabase</text>
 
-    <rect x="714" y="612" width="104" height="40" rx="8" fill="#161b22"/>
-    <circle cx="734" cy="632" r="5" fill="#f0f6fc"/>
-    <text x="750" y="637" fill="#c9d1d9">Prisma</text>
+    <rect x="52" y="614" width="96" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="633" r="5" fill="#f0f6fc"/>
+    <text x="86" y="638" fill="#c9d1d9">Prisma</text>
 
-    <rect x="832" y="612" width="82" height="40" rx="8" fill="#161b22"/>
-    <circle cx="852" cy="632" r="5" fill="#58a6ff"/>
-    <text x="868" y="637" fill="#c9d1d9">SQL</text>
+    <rect x="160" y="614" width="74" height="38" rx="8" fill="#161b22"/>
+    <circle cx="178" cy="633" r="5" fill="#58a6ff"/>
+    <text x="194" y="638" fill="#c9d1d9">SQL</text>
   </g>
 
-  <!-- ================================================= -->
-  <!-- LANGUAGES -->
-  <!-- ================================================= -->
+  <line x1="28" y1="680" x2="692" y2="680"
+        stroke="#21262d" stroke-width="1.2"/>
 
-  <rect x="36" y="736" width="1128" height="170" rx="14" fill="#0f1622" stroke="#21262d"/>
-  <rect x="36" y="736" width="8" height="170" rx="4" fill="#d29922"/>
+  <!-- ================================================= -->
+  <!-- Languages -->
+  <!-- ================================================= -->
+  <rect x="28" y="706" width="7" height="122" rx="3.5" fill="#d29922"/>
 
-  <text x="64" y="771"
+  <text x="52" y="736"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
         font-size="22"
@@ -204,63 +188,64 @@
     Languages
   </text>
 
-  <text x="64" y="798"
+  <text x="52" y="760"
         fill="#8b949e"
         font-family="Arial, sans-serif"
         font-size="13">
     Programming languages I’ve used across academic and personal projects.
   </text>
 
-  <g font-family="monospace" font-size="14">
-    <rect x="64" y="820" width="104" height="40" rx="8" fill="#161b22"/>
-    <circle cx="84" cy="840" r="5" fill="#3776ab"/>
-    <text x="100" y="845" fill="#c9d1d9">Python</text>
+  <g font-family="monospace" font-size="13.5">
+    <rect x="52" y="780" width="96" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="799" r="5" fill="#3776ab"/>
+    <text x="86" y="804" fill="#c9d1d9">Python</text>
 
-    <rect x="182" y="820" width="82" height="40" rx="8" fill="#161b22"/>
-    <circle cx="202" cy="840" r="5" fill="#00599c"/>
-    <text x="218" y="845" fill="#c9d1d9">C++</text>
+    <rect x="160" y="780" width="74" height="38" rx="8" fill="#161b22"/>
+    <circle cx="178" cy="799" r="5" fill="#00599c"/>
+    <text x="194" y="804" fill="#c9d1d9">C++</text>
 
-    <rect x="278" y="820" width="78" height="40" rx="8" fill="#161b22"/>
-    <circle cx="298" cy="840" r="5" fill="#512bd4"/>
-    <text x="314" y="845" fill="#c9d1d9">C#</text>
+    <rect x="246" y="780" width="70" height="38" rx="8" fill="#161b22"/>
+    <circle cx="264" cy="799" r="5" fill="#512bd4"/>
+    <text x="280" y="804" fill="#c9d1d9">C#</text>
 
-    <rect x="370" y="820" width="88" height="40" rx="8" fill="#161b22"/>
-    <circle cx="390" cy="840" r="5" fill="#ed8b00"/>
-    <text x="406" y="845" fill="#c9d1d9">Java</text>
+    <rect x="328" y="780" width="82" height="38" rx="8" fill="#161b22"/>
+    <circle cx="346" cy="799" r="5" fill="#ed8b00"/>
+    <text x="362" y="804" fill="#c9d1d9">Java</text>
 
-    <rect x="472" y="820" width="138" height="40" rx="8" fill="#161b22"/>
-    <circle cx="492" cy="840" r="5" fill="#f7df1e"/>
-    <text x="508" y="845" fill="#c9d1d9">JavaScript</text>
+    <rect x="422" y="780" width="128" height="38" rx="8" fill="#161b22"/>
+    <circle cx="440" cy="799" r="5" fill="#f7df1e"/>
+    <text x="456" y="804" fill="#c9d1d9">JavaScript</text>
 
-    <rect x="624" y="820" width="138" height="40" rx="8" fill="#161b22"/>
-    <circle cx="644" cy="840" r="5" fill="#3178c6"/>
-    <text x="660" y="845" fill="#c9d1d9">TypeScript</text>
+    <rect x="52" y="830" width="128" height="38" rx="8" fill="#161b22"/>
+    <circle cx="70" cy="849" r="5" fill="#3178c6"/>
+    <text x="86" y="854" fill="#c9d1d9">TypeScript</text>
 
-    <rect x="776" y="820" width="84" height="40" rx="8" fill="#161b22"/>
-    <circle cx="796" cy="840" r="5" fill="#0175c2"/>
-    <text x="812" y="845" fill="#c9d1d9">Dart</text>
+    <rect x="192" y="830" width="76" height="38" rx="8" fill="#161b22"/>
+    <circle cx="210" cy="849" r="5" fill="#0175c2"/>
+    <text x="226" y="854" fill="#c9d1d9">Dart</text>
 
-    <rect x="874" y="820" width="80" height="40" rx="8" fill="#161b22"/>
-    <circle cx="894" cy="840" r="5" fill="#777bb4"/>
-    <text x="910" y="845" fill="#c9d1d9">PHP</text>
+    <rect x="280" y="830" width="72" height="38" rx="8" fill="#161b22"/>
+    <circle cx="298" cy="849" r="5" fill="#777bb4"/>
+    <text x="314" y="854" fill="#c9d1d9">PHP</text>
   </g>
 
   <!-- Footer -->
-  <line x1="36" y1="930" x2="1164" y2="930" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="28" y1="906" x2="692" y2="906"
+        stroke="#30363d" stroke-width="1.4"/>
 
-  <text x="36" y="958"
+  <text x="28" y="934"
         fill="#8b949e"
         font-family="monospace"
-        font-size="12"
-        letter-spacing="1">
+        font-size="11.5"
+        letter-spacing="0.7">
     TOOLS · Streamlit · Gradio · Git · GitHub · Vercel
   </text>
 
-  <text x="1164" y="958"
+  <text x="692" y="934"
         text-anchor="end"
         fill="#8b949e"
         font-family="monospace"
-        font-size="12">
+        font-size="11.5">
     KEEP LEARNING · KEEP BUILDING
   </text>
 
