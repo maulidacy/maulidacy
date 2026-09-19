@@ -3,51 +3,63 @@
      height="520"
      viewBox="0 0 720 520">
 
-  <!-- Background -->
-  <rect width="720" height="520" rx="14" fill="#0d1117"/>
+  <!-- ================================================= -->
+  <!-- BACKGROUND -->
+  <!-- ================================================= -->
 
-  <rect x="1" y="1"
-        width="718" height="518"
+  <rect width="720"
+        height="520"
+        rx="14"
+        fill="#0d1117"/>
+
+  <rect x="1"
+        y="1"
+        width="718"
+        height="518"
         rx="13"
         fill="none"
         stroke="#30363d"
         stroke-width="2"/>
 
-  <!-- Header -->
-  <text x="28" y="34"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="11"
-        letter-spacing="1.2">
-    MAULIDACY / GITHUB SNAPSHOT
-  </text>
 
-  <circle cx="640" cy="30"
+  <!-- ================================================= -->
+  <!-- HEADER -->
+  <!-- ================================================= -->
+
+  <circle cx="640"
+          cy="30"
           r="4.5"
           fill="#3fb950">
+
     <animate
       attributeName="opacity"
       values="1;0.3;1"
       dur="2s"
       repeatCount="indefinite"/>
+
   </circle>
 
-  <text x="653" y="34"
+  <text x="653"
+        y="34"
         fill="#8b949e"
         font-family="monospace"
         font-size="11">
     ACTIVE
   </text>
 
-  <line x1="28" y1="50"
-        x2="692" y2="50"
+  <line x1="28"
+        y1="50"
+        x2="692"
+        y2="50"
         stroke="#30363d"/>
 
+
   <!-- ================================================= -->
-  <!-- ROW 1 : CONTRIBUTIONS -->
+  <!-- CONTRIBUTIONS -->
   <!-- ================================================= -->
 
-  <text x="34" y="78"
+  <text x="34"
+        y="78"
         fill="#8b949e"
         font-family="monospace"
         font-size="11"
@@ -55,162 +67,148 @@
     CONTRIBUTIONS
   </text>
 
-  <text x="34" y="114"
+  <text x="34"
+        y="114"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
         font-size="31"
         font-weight="700">
-    1,250
+    1,219
   </text>
 
-  <text x="140" y="114"
+  <text x="140"
+        y="114"
         fill="#8b949e"
         font-family="Arial, sans-serif"
         font-size="14">
     total contributions
   </text>
 
-  <text x="686" y="109"
+  <!-- Trend -->
+  <text x="686"
+        y="109"
         text-anchor="end"
         fill="#3fb950"
         font-family="monospace"
         font-size="10.5">
-    ▲ 53.4% VS PREVIOUS 30 DAYS
+    ▲ 18.4% VS PREVIOUS 30 DAYS
   </text>
 
-  <!-- Chart grid -->
-  <g stroke="#21262d" stroke-width="1">
+
+  <!-- ================================================= -->
+  <!-- CHART GRID -->
+  <!-- ================================================= -->
+
+  <g stroke="#21262d"
+     stroke-width="1">
+
     <line x1="34" y1="155" x2="686" y2="155"/>
     <line x1="34" y1="198" x2="686" y2="198"/>
     <line x1="34" y1="241" x2="686" y2="241"/>
     <line x1="34" y1="285" x2="686" y2="285"/>
+
   </g>
 
-  <path d="M42.0 194.7 L99.8 267.1 L157.6 236.7 L215.5 267.8 L273.3 280.9 L331.1 267.1 L388.9 268.4 L446.7 249.8 L504.5 258.8 L562.4 278.8 L620.2 145.0 L678.0 176.0 L678.0 285 L42.0 285 Z"
-        fill="#3fb950"
-        opacity="0.07"/>
 
-  <polyline points="42.0,194.7 99.8,267.1 157.6,236.7 215.5,267.8 273.3,280.9 331.1,267.1 388.9,268.4 446.7,249.8 504.5,258.8 562.4,278.8 620.2,145.0 678.0,176.0"
-        fill="none"
-        stroke="#3fb950"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"/>
+  <!-- ================================================= -->
+  <!-- CHART AREA -->
+  <!-- ================================================= -->
 
-  
-  <circle
-    cx="42.0"
-    cy="194.7"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="99.8"
-    cy="267.1"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="157.6"
-    cy="236.7"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="215.5"
-    cy="267.8"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="273.3"
-    cy="280.9"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="331.1"
-    cy="267.1"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="388.9"
-    cy="268.4"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="446.7"
-    cy="249.8"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="504.5"
-    cy="258.8"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="562.4"
-    cy="278.8"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="620.2"
-    cy="145.0"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
-  <circle
-    cx="678.0"
-    cy="176.0"
-    r="4"
-    fill="#0d1117"
-    stroke="#3fb950"
-    stroke-width="2"
-  />
+  <path
+    d="
+      M42 265
+      L96 246
+      L150 254
+      L204 223
+      L258 232
+      L312 210
+      L366 222
+      L420 193
+      L474 204
+      L528 174
+      L582 188
+      L636 148
+      L636 285
+      L42 285
+      Z
+    "
+    fill="#3fb950"
+    opacity="0.07"/>
 
-  <text x="34" y="304"
+
+  <!-- ================================================= -->
+  <!-- CHART LINE -->
+  <!-- ================================================= -->
+
+  <polyline
+    points="
+      42,265
+      96,246
+      150,254
+      204,223
+      258,232
+      312,210
+      366,222
+      420,193
+      474,204
+      528,174
+      582,188
+      636,148
+    "
+    fill="none"
+    stroke="#3fb950"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+
+  <!-- ================================================= -->
+  <!-- CHART POINTS -->
+  <!-- ================================================= -->
+
+  <g fill="#0d1117"
+     stroke="#3fb950"
+     stroke-width="2">
+
+    <circle cx="42"  cy="265" r="4"/>
+    <circle cx="96"  cy="246" r="4"/>
+    <circle cx="150" cy="254" r="4"/>
+    <circle cx="204" cy="223" r="4"/>
+    <circle cx="258" cy="232" r="4"/>
+    <circle cx="312" cy="210" r="4"/>
+    <circle cx="366" cy="222" r="4"/>
+    <circle cx="420" cy="193" r="4"/>
+    <circle cx="474" cy="204" r="4"/>
+    <circle cx="528" cy="174" r="4"/>
+    <circle cx="582" cy="188" r="4"/>
+    <circle cx="636" cy="148" r="5"/>
+
+  </g>
+
+
+  <!-- ================================================= -->
+  <!-- CHART LABELS -->
+  <!-- ================================================= -->
+
+  <text x="34"
+        y="304"
         fill="#6e7681"
         font-family="monospace"
         font-size="9.5">
-    OCT 2025
+    SEP 2025
   </text>
 
-  <text x="360" y="304"
+  <text x="360"
+        y="304"
         text-anchor="middle"
         fill="#6e7681"
         font-family="monospace"
         font-size="9.5">
-    APR 2026
+    MAR 2026
   </text>
 
-  <text x="686" y="304"
+  <text x="686"
+        y="304"
         text-anchor="end"
         fill="#6e7681"
         font-family="monospace"
@@ -218,120 +216,132 @@
     SEP 2026
   </text>
 
-  <line x1="28" y1="324"
-        x2="692" y2="324"
+
+  <!-- Main divider -->
+  <line x1="28"
+        y1="324"
+        x2="692"
+        y2="324"
         stroke="#30363d"/>
 
+
   <!-- ================================================= -->
-  <!-- ROW 2 LEFT : STREAKS -->
+  <!-- CURRENT STREAK -->
   <!-- ================================================= -->
 
-  <text x="34" y="351"
+  <text x="34"
+        y="351"
         fill="#8b949e"
         font-family="monospace"
         font-size="11"
         letter-spacing="1.4">
-    STREAKS
+    CURRENT STREAK
   </text>
 
-  <circle cx="92" cy="411"
+
+  <!-- Animated outer ring -->
+  <circle cx="96"
+          cy="420"
           r="44"
           fill="none"
           stroke="#3fb950"
           stroke-width="2"
           opacity="0.22">
-    
+
     <animate
       attributeName="r"
       values="43;49;43"
       dur="2.5s"
-      repeatCount="indefinite"
-    />
+      repeatCount="indefinite"/>
+
     <animate
       attributeName="opacity"
       values="0.28;0.04;0.28"
       dur="2.5s"
-      repeatCount="indefinite"
-    />
+      repeatCount="indefinite"/>
+
   </circle>
 
-  <circle cx="92" cy="411"
+
+  <!-- Main ring -->
+  <circle cx="96"
+          cy="420"
           r="39"
           fill="#11161d"
           stroke="#3fb950"
           stroke-width="3"/>
 
-  <text x="92" y="420"
+
+  <!-- Current streak value -->
+  <text x="96"
+        y="429"
         text-anchor="middle"
         fill="#3fb950"
         font-family="Arial, sans-serif"
         font-size="27"
         font-weight="700">
-    45
+    44
   </text>
 
-  <text x="92" y="440"
+  <text x="96"
+        y="449"
         text-anchor="middle"
         fill="#8b949e"
         font-family="monospace"
-        font-size="8.5">
+        font-size="8.5"
+        letter-spacing="0.7">
     DAYS
   </text>
 
-  <text x="154" y="385"
+
+  <!-- ================================================= -->
+  <!-- LONGEST STREAK -->
+  <!-- ================================================= -->
+
+  <text x="190"
+        y="385"
         fill="#8b949e"
         font-family="monospace"
-        font-size="10">
-    CURRENT
+        font-size="10"
+        letter-spacing="1.1">
+    LONGEST STREAK
   </text>
 
-  <text x="154" y="410"
+  <text x="190"
+        y="416"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
-        font-size="19"
+        font-size="24"
         font-weight="700">
-    45 days
+    44 days
   </text>
 
-  <text x="154" y="430"
+  <text x="190"
+        y="444"
         fill="#6e7681"
         font-family="monospace"
         font-size="9.5">
-    Aug 6 - PRESENT
+    Aug 6 - Sep 18
   </text>
 
-  <text x="154" y="460"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="10">
-    LONGEST
-  </text>
 
-  <text x="154" y="485"
-        fill="#f0f6fc"
-        font-family="Arial, sans-serif"
-        font-size="19"
-        font-weight="700">
-    45 days
-  </text>
+  <!-- ================================================= -->
+  <!-- VERTICAL DIVIDER -->
+  <!-- ================================================= -->
 
-  <text x="246" y="485"
-        fill="#6e7681"
-        font-family="monospace"
-        font-size="9.5">
-    Aug 6 - Sep 19
-  </text>
-
-  <!-- Vertical divider -->
-  <line x1="340" y1="348"
-        x2="340" y2="492"
+  <line x1="340"
+        y1="348"
+        x2="340"
+        y2="492"
         stroke="#30363d"/>
 
+
   <!-- ================================================= -->
-  <!-- ROW 2 RIGHT : LANGUAGES -->
+  <!-- MOST USED LANGUAGES -->
   <!-- ================================================= -->
 
-  <text x="374" y="351"
+  <text x="374"
+        y="351"
         fill="#8b949e"
         font-family="monospace"
         font-size="11"
@@ -339,135 +349,114 @@
     MOST USED LANGUAGES
   </text>
 
-  
-  <text
-    x="374"
-    y="401"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="12"
-  >
-    Jupyter Notebook
+
+  <!-- Python -->
+  <text x="374"
+        y="401"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="12">
+    Python
   </text>
 
-  <rect
-    x="486"
-    y="392"
-    width="150"
-    height="7"
-    rx="3.5"
-    fill="#21262d"
-  />
+  <rect x="486"
+        y="392"
+        width="150"
+        height="7"
+        rx="3.5"
+        fill="#21262d"/>
 
-  <rect
-    x="486"
-    y="392"
-    width="85.2"
-    height="7"
-    rx="3.5"
-    fill="#58a6ff"
-  />
+  <rect x="486"
+        y="392"
+        width="114"
+        height="7"
+        rx="3.5"
+        fill="#58a6ff"/>
 
-  <text
-    x="676"
-    y="401"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10.5"
-  >
-    56.8%
+  <text x="676"
+        y="401"
+        text-anchor="end"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="10.5">
+    38%
   </text>
 
-  <text
-    x="374"
-    y="437"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="12"
-  >
+
+  <!-- Jupyter -->
+  <text x="374"
+        y="437"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="12">
+    Jupyter
+  </text>
+
+  <rect x="486"
+        y="428"
+        width="150"
+        height="7"
+        rx="3.5"
+        fill="#21262d"/>
+
+  <rect x="486"
+        y="428"
+        width="81"
+        height="7"
+        rx="3.5"
+        fill="#3fb950"/>
+
+  <text x="676"
+        y="437"
+        text-anchor="end"
+        fill="#8b949e"
+        font-family="monospace"
+        font-size="10.5">
+    27%
+  </text>
+
+
+  <!-- TypeScript -->
+  <text x="374"
+        y="473"
+        fill="#c9d1d9"
+        font-family="monospace"
+        font-size="12">
     TypeScript
   </text>
 
-  <rect
-    x="486"
-    y="428"
-    width="150"
-    height="7"
-    rx="3.5"
-    fill="#21262d"
-  />
+  <rect x="486"
+        y="464"
+        width="150"
+        height="7"
+        rx="3.5"
+        fill="#21262d"/>
 
-  <rect
-    x="486"
-    y="428"
-    width="23.1"
-    height="7"
-    rx="3.5"
-    fill="#3fb950"
-  />
+  <rect x="486"
+        y="464"
+        width="63"
+        height="7"
+        rx="3.5"
+        fill="#a371f7"/>
 
-  <text
-    x="676"
-    y="437"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10.5"
-  >
-    15.4%
-  </text>
-
-  <text
-    x="374"
-    y="473"
-    fill="#c9d1d9"
-    font-family="monospace"
-    font-size="12"
-  >
-    HTML
-  </text>
-
-  <rect
-    x="486"
-    y="464"
-    width="150"
-    height="7"
-    rx="3.5"
-    fill="#21262d"
-  />
-
-  <rect
-    x="486"
-    y="464"
-    width="20.5"
-    height="7"
-    rx="3.5"
-    fill="#a371f7"
-  />
-
-  <text
-    x="676"
-    y="473"
-    text-anchor="end"
-    fill="#8b949e"
-    font-family="monospace"
-    font-size="10.5"
-  >
-    13.7%
-  </text>
-
-
-  <!-- Footer -->
-  <line x1="28" y1="500"
-        x2="692" y2="500"
-        stroke="#30363d"/>
-
-  <text x="34" y="515"
-        fill="#6e7681"
+  <text x="676"
+        y="473"
+        text-anchor="end"
+        fill="#8b949e"
         font-family="monospace"
-        font-size="9">
-    AUTO UPDATED
+        font-size="10.5">
+    21%
   </text>
+
+
+  <!-- ================================================= -->
+  <!-- FOOTER -->
+  <!-- ================================================= -->
+
+  <line x1="28"
+        y1="500"
+        x2="692"
+        y2="500"
+        stroke="#30363d"/>
 
 </svg>
