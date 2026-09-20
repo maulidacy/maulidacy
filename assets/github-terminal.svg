@@ -13,15 +13,7 @@
         stroke="#30363d"
         stroke-width="2"/>
 
-  <!-- Header -->
-  <text x="28" y="34"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="11"
-        letter-spacing="1.2">
-    MAULIDACY / GITHUB SNAPSHOT
-  </text>
-
+  <!-- Header status -->
   <circle cx="640" cy="30"
           r="4.5"
           fill="#3fb950">
@@ -75,7 +67,7 @@
         fill="#3fb950"
         font-family="monospace"
         font-size="10.5">
-    ▲ 40.9% VS PREVIOUS 30 DAYS
+    ▲ 27.6% VS PREVIOUS 30 DAYS
   </text>
 
   <!-- Chart grid -->
@@ -223,7 +215,7 @@
         stroke="#30363d"/>
 
   <!-- ================================================= -->
-  <!-- ROW 2 LEFT : STREAKS -->
+  <!-- ROW 2 LEFT : CURRENT & LONGEST STREAK -->
   <!-- ================================================= -->
 
   <text x="34" y="351"
@@ -231,10 +223,11 @@
         font-family="monospace"
         font-size="11"
         letter-spacing="1.4">
-    STREAKS
+    CURRENT STREAK
   </text>
 
-  <circle cx="92" cy="411"
+  <!-- Animated outer ring -->
+  <circle cx="92" cy="420"
           r="44"
           fill="none"
           stroke="#3fb950"
@@ -255,13 +248,14 @@
     />
   </circle>
 
-  <circle cx="92" cy="411"
+  <!-- Main streak ring -->
+  <circle cx="92" cy="420"
           r="39"
           fill="#11161d"
           stroke="#3fb950"
           stroke-width="3"/>
 
-  <text x="92" y="420"
+  <text x="92" y="429"
         text-anchor="middle"
         fill="#3fb950"
         font-family="Arial, sans-serif"
@@ -270,52 +264,33 @@
     46
   </text>
 
-  <text x="92" y="440"
+  <text x="92" y="449"
         text-anchor="middle"
         fill="#8b949e"
         font-family="monospace"
-        font-size="8.5">
+        font-size="8.5"
+        letter-spacing="0.7">
     DAYS
   </text>
 
-  <text x="154" y="385"
+  <!-- Longest streak -->
+  <text x="190" y="385"
         fill="#8b949e"
         font-family="monospace"
-        font-size="10">
-    CURRENT
+        font-size="10"
+        letter-spacing="1.1">
+    LONGEST STREAK
   </text>
 
-  <text x="154" y="410"
+  <text x="190" y="416"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
-        font-size="19"
+        font-size="24"
         font-weight="700">
     46 days
   </text>
 
-  <text x="154" y="430"
-        fill="#6e7681"
-        font-family="monospace"
-        font-size="9.5">
-    Aug 6 - PRESENT
-  </text>
-
-  <text x="154" y="460"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="10">
-    LONGEST
-  </text>
-
-  <text x="154" y="485"
-        fill="#f0f6fc"
-        font-family="Arial, sans-serif"
-        font-size="19"
-        font-weight="700">
-    46 days
-  </text>
-
-  <text x="246" y="485"
+  <text x="190" y="444"
         fill="#6e7681"
         font-family="monospace"
         font-size="9.5">
@@ -463,11 +438,5 @@
         x2="692" y2="500"
         stroke="#30363d"/>
 
-  <text x="34" y="515"
-        fill="#6e7681"
-        font-family="monospace"
-        font-size="9">
-    AUTO UPDATED
-  </text>
 
 </svg>
