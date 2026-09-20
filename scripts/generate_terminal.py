@@ -639,10 +639,6 @@ def generate_svg(
     )
     area_path = chart_area(monthly_values)
 
-    current_period = format_current_period(
-        current_start
-    )
-
     longest_period = format_period(
         longest_start,
         longest_end,
@@ -701,15 +697,7 @@ def generate_svg(
         stroke="#30363d"
         stroke-width="2"/>
 
-  <!-- Header -->
-  <text x="28" y="34"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="11"
-        letter-spacing="1.2">
-    MAULIDACY / GITHUB SNAPSHOT
-  </text>
-
+  <!-- Header status -->
   <circle cx="640" cy="30"
           r="4.5"
           fill="{status['color']}">
@@ -815,7 +803,7 @@ def generate_svg(
         stroke="#30363d"/>
 
   <!-- ================================================= -->
-  <!-- ROW 2 LEFT : STREAKS -->
+  <!-- ROW 2 LEFT : CURRENT & LONGEST STREAK -->
   <!-- ================================================= -->
 
   <text x="34" y="351"
@@ -823,10 +811,11 @@ def generate_svg(
         font-family="monospace"
         font-size="11"
         letter-spacing="1.4">
-    STREAKS
+    CURRENT STREAK
   </text>
 
-  <circle cx="92" cy="411"
+  <!-- Animated outer ring -->
+  <circle cx="92" cy="420"
           r="44"
           fill="none"
           stroke="{streak_color}"
@@ -835,13 +824,14 @@ def generate_svg(
     {streak_animation}
   </circle>
 
-  <circle cx="92" cy="411"
+  <!-- Main streak ring -->
+  <circle cx="92" cy="420"
           r="39"
           fill="#11161d"
           stroke="{streak_color}"
           stroke-width="3"/>
 
-  <text x="92" y="420"
+  <text x="92" y="429"
         text-anchor="middle"
         fill="{streak_color}"
         font-family="Arial, sans-serif"
@@ -850,52 +840,33 @@ def generate_svg(
     {current_streak}
   </text>
 
-  <text x="92" y="440"
+  <text x="92" y="449"
         text-anchor="middle"
         fill="#8b949e"
         font-family="monospace"
-        font-size="8.5">
+        font-size="8.5"
+        letter-spacing="0.7">
     DAYS
   </text>
 
-  <text x="154" y="385"
+  <!-- Longest streak -->
+  <text x="190" y="385"
         fill="#8b949e"
         font-family="monospace"
-        font-size="10">
-    CURRENT
+        font-size="10"
+        letter-spacing="1.1">
+    LONGEST STREAK
   </text>
 
-  <text x="154" y="410"
+  <text x="190" y="416"
         fill="#f0f6fc"
         font-family="Arial, sans-serif"
-        font-size="19"
-        font-weight="700">
-    {current_streak} days
-  </text>
-
-  <text x="154" y="430"
-        fill="#6e7681"
-        font-family="monospace"
-        font-size="9.5">
-    {current_period}
-  </text>
-
-  <text x="154" y="460"
-        fill="#8b949e"
-        font-family="monospace"
-        font-size="10">
-    LONGEST
-  </text>
-
-  <text x="154" y="485"
-        fill="#f0f6fc"
-        font-family="Arial, sans-serif"
-        font-size="19"
+        font-size="24"
         font-weight="700">
     {longest_streak} days
   </text>
 
-  <text x="246" y="485"
+  <text x="190" y="444"
         fill="#6e7681"
         font-family="monospace"
         font-size="9.5">
@@ -926,12 +897,6 @@ def generate_svg(
         x2="692" y2="500"
         stroke="#30363d"/>
 
-  <text x="34" y="515"
-        fill="#6e7681"
-        font-family="monospace"
-        font-size="9">
-    AUTO UPDATED
-  </text>
 
 </svg>
 """
