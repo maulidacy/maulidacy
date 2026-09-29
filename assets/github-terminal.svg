@@ -52,7 +52,7 @@
         font-family="Arial, sans-serif"
         font-size="31"
         font-weight="700">
-    1,283
+    1,284
   </text>
 
   <text x="140" y="114"
@@ -64,10 +64,10 @@
 
   <text x="686" y="109"
         text-anchor="end"
-        fill="#3fb950"
+        fill="#f85149"
         font-family="monospace"
         font-size="10.5">
-    ▲ 5.2% VS PREVIOUS 30 DAYS
+    ▼ 2.5% VS PREVIOUS 30 DAYS
   </text>
 
   <!-- Chart grid -->
@@ -78,13 +78,13 @@
     <line x1="34" y1="285" x2="686" y2="285"/>
   </g>
 
-  <path d="M42.0 194.7 L99.8 267.1 L157.6 236.7 L215.5 267.8 L273.3 280.9 L331.1 267.1 L388.9 268.4 L446.7 249.8 L504.5 258.8 L562.4 278.8 L620.2 145.0 L678.0 153.3 L678.0 285 L42.0 285 Z"
-        fill="#3fb950"
+  <path d="M42.0 194.7 L99.8 267.1 L157.6 236.7 L215.5 267.8 L273.3 280.9 L331.1 267.1 L388.9 268.4 L446.7 249.8 L504.5 258.8 L562.4 278.8 L620.2 145.0 L678.0 152.6 L678.0 285 L42.0 285 Z"
+        fill="#f85149"
         opacity="0.07"/>
 
-  <polyline points="42.0,194.7 99.8,267.1 157.6,236.7 215.5,267.8 273.3,280.9 331.1,267.1 388.9,268.4 446.7,249.8 504.5,258.8 562.4,278.8 620.2,145.0 678.0,153.3"
+  <polyline points="42.0,194.7 99.8,267.1 157.6,236.7 215.5,267.8 273.3,280.9 331.1,267.1 388.9,268.4 446.7,249.8 504.5,258.8 562.4,278.8 620.2,145.0 678.0,152.6"
         fill="none"
-        stroke="#3fb950"
+        stroke="#f85149"
         stroke-width="3"
         stroke-linecap="round"
         stroke-linejoin="round"/>
@@ -95,7 +95,7 @@
     cy="194.7"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -103,7 +103,7 @@
     cy="267.1"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -111,7 +111,7 @@
     cy="236.7"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -119,7 +119,7 @@
     cy="267.8"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -127,7 +127,7 @@
     cy="280.9"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -135,7 +135,7 @@
     cy="267.1"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -143,7 +143,7 @@
     cy="268.4"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -151,7 +151,7 @@
     cy="249.8"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -159,7 +159,7 @@
     cy="258.8"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -167,7 +167,7 @@
     cy="278.8"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
@@ -175,15 +175,15 @@
     cy="145.0"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
   <circle
     cx="678.0"
-    cy="153.3"
+    cy="152.6"
     r="4"
     fill="#0d1117"
-    stroke="#3fb950"
+    stroke="#f85149"
     stroke-width="2"
   />
 
