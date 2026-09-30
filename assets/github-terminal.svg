@@ -52,7 +52,7 @@
         font-family="Arial, sans-serif"
         font-size="31"
         font-weight="700">
-    1,284
+    1,285
   </text>
 
   <text x="140" y="114"
@@ -67,7 +67,7 @@
         fill="#f85149"
         font-family="monospace"
         font-size="10.5">
-    ▼ 4.5% VS PREVIOUS 30 DAYS
+    ▼ 4.0% VS PREVIOUS 30 DAYS
   </text>
 
   <!-- Chart grid -->
@@ -78,11 +78,11 @@
     <line x1="34" y1="285" x2="686" y2="285"/>
   </g>
 
-  <path d="M42.0 267.1 L99.8 236.7 L157.6 267.8 L215.5 280.9 L273.3 267.1 L331.1 268.4 L388.9 249.8 L446.7 258.8 L504.5 278.8 L562.4 145.0 L620.2 152.6 L678.0 285.0 L678.0 285 L42.0 285 Z"
+  <path d="M42.0 267.1 L99.8 236.7 L157.6 267.8 L215.5 280.9 L273.3 267.1 L331.1 268.4 L388.9 249.8 L446.7 258.8 L504.5 278.8 L562.4 145.0 L620.2 151.9 L678.0 285.0 L678.0 285 L42.0 285 Z"
         fill="#f85149"
         opacity="0.07"/>
 
-  <polyline points="42.0,267.1 99.8,236.7 157.6,267.8 215.5,280.9 273.3,267.1 331.1,268.4 388.9,249.8 446.7,258.8 504.5,278.8 562.4,145.0 620.2,152.6 678.0,285.0"
+  <polyline points="42.0,267.1 99.8,236.7 157.6,267.8 215.5,280.9 273.3,267.1 331.1,268.4 388.9,249.8 446.7,258.8 504.5,278.8 562.4,145.0 620.2,151.9 678.0,285.0"
         fill="none"
         stroke="#f85149"
         stroke-width="3"
@@ -172,7 +172,7 @@
   />
   <circle
     cx="620.2"
-    cy="152.6"
+    cy="151.9"
     r="4"
     fill="#0d1117"
     stroke="#f85149"
@@ -230,26 +230,38 @@
   <circle cx="92" cy="420"
           r="44"
           fill="none"
-          stroke="#6e7681"
+          stroke="#3fb950"
           stroke-width="2"
           opacity="0.22">
     
+    <animate
+      attributeName="r"
+      values="43;49;43"
+      dur="2.5s"
+      repeatCount="indefinite"
+    />
+    <animate
+      attributeName="opacity"
+      values="0.28;0.04;0.28"
+      dur="2.5s"
+      repeatCount="indefinite"
+    />
   </circle>
 
   <!-- Main streak ring -->
   <circle cx="92" cy="420"
           r="39"
           fill="#11161d"
-          stroke="#6e7681"
+          stroke="#3fb950"
           stroke-width="3"/>
 
   <text x="92" y="429"
         text-anchor="middle"
-        fill="#6e7681"
+        fill="#3fb950"
         font-family="Arial, sans-serif"
         font-size="27"
         font-weight="700">
-    0
+    56
   </text>
 
   <text x="92" y="449"
@@ -275,14 +287,14 @@
         font-family="Arial, sans-serif"
         font-size="24"
         font-weight="700">
-    55 days
+    56 days
   </text>
 
   <text x="190" y="444"
         fill="#6e7681"
         font-family="monospace"
         font-size="9.5">
-    Aug 6 - Sep 29
+    Aug 6 - Sep 30
   </text>
 
   <!-- Vertical divider -->
