@@ -67,7 +67,7 @@
         fill="#f85149"
         font-family="monospace"
         font-size="10.5">
-    ▼ 29.4% VS PREVIOUS 30 DAYS
+    ▼ 30.6% VS PREVIOUS 30 DAYS
   </text>
 
   <!-- Chart grid -->
@@ -230,38 +230,26 @@
   <circle cx="92" cy="420"
           r="44"
           fill="none"
-          stroke="#3fb950"
+          stroke="#6e7681"
           stroke-width="2"
           opacity="0.22">
     
-    <animate
-      attributeName="r"
-      values="43;49;43"
-      dur="2.5s"
-      repeatCount="indefinite"
-    />
-    <animate
-      attributeName="opacity"
-      values="0.28;0.04;0.28"
-      dur="2.5s"
-      repeatCount="indefinite"
-    />
   </circle>
 
   <!-- Main streak ring -->
   <circle cx="92" cy="420"
           r="39"
           fill="#11161d"
-          stroke="#3fb950"
+          stroke="#6e7681"
           stroke-width="3"/>
 
   <text x="92" y="429"
         text-anchor="middle"
-        fill="#3fb950"
+        fill="#6e7681"
         font-family="Arial, sans-serif"
         font-size="27"
         font-weight="700">
-    3
+    0
   </text>
 
   <text x="92" y="449"
